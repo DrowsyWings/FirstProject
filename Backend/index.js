@@ -23,7 +23,6 @@ app.post("/", async (req, res) => {
   try {
     if (!formSchema.safeParse(req.body).success) {
       res.status(400).json({ message: "Invalid Form Data" });
-      throw new Error("Invalid Form Data");
     }
 
     // const mobileNumber = parsePhoneNumberFromString(MobileNumber, "IN");
@@ -34,7 +33,6 @@ app.post("/", async (req, res) => {
 
     if (!FirstName || !LastName || !City) {
       res.status(400).json({ message: "Please Fill All Fields" });
-      throw new Error("Please Fill All Fields");
     }
 
     const existingMobileNumber = await LandingPageForm.findOne({
@@ -42,7 +40,6 @@ app.post("/", async (req, res) => {
     });
     if (existingMobileNumber) {
       res.status(409).json({ message: "Mobile Number already exists" });
-      throw new Error("Mobile Number already exists");
     }
 
     const form = new LandingPageForm({
@@ -86,7 +83,6 @@ app.post("/distribute", async (req, res) => {
   try {
     if (!distributeFormSchema.safeParse(req.body).success) {
       res.status(400).json({ message: "Invalid Form Data" });
-      throw new Error("Invalid Form Data");
     }
 
     // const mobileNumber = parsePhoneNumberFromString(MobileNumber, "IN");
@@ -97,7 +93,6 @@ app.post("/distribute", async (req, res) => {
 
     if (!FirstName || !LastName || !City || !ShippingAddress || !Amount) {
       res.status(400).json({ message: "Please Fill All Fields" });
-      throw new Error("Please Fill All Fields");
     }
 
     const existingMobileNumber = await DistributeForm.findOne({
@@ -105,7 +100,6 @@ app.post("/distribute", async (req, res) => {
     });
     if (existingMobileNumber) {
       res.status(409).json({ message: "Mobile Number already exists" });
-      // throw new Error("Mobile Number already exists");
     }
 
     const form = new DistributeForm({

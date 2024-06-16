@@ -1,9 +1,12 @@
 import React from 'react'
+import Subscribe from './Subscribe'
+import ComponentD1 from './ComponentD1'
 
 function Distribute() {
   return (
     <div>
-      <h1>Please Distribute</h1>
+      <ComponentD1></ComponentD1>
+      <Subscribe></Subscribe>
     </div>
   )
 }

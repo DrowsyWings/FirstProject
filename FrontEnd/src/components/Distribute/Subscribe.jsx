@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import axios from "axios";
 
-function Subscribe() {
+function Subscribe({ formRef }) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [Mobile, setMobile] = useState("");
   const [City, setCity] = useState("");
   const [Company, setCompany] = useState("");
-  const [buisness, setBuisness] = useState("");
+  const [business, setbusiness] = useState("");
   const [address, setAddress] = useState("");
   const [amount, setAmount] = useState(0);
   const [captchaValue, setCaptchaValue] = useState(null);
@@ -29,6 +29,7 @@ function Subscribe() {
     if (!Mobile) newErrors.mobile = "Mobile number is required.";
     else if (!/^\d{10}$/.test(Mobile))
       newErrors.mobile = "Mobile number must be exactly 10 digits.";
+    if (!Company) newErrors.company = "Company Name is required.";
     if (!City) newErrors.city = "City is required.";
     if (!address) newErrors.address = "Shipping Address is required";
     if (!amount) newErrors.amount = "Amount is Required";
@@ -48,16 +49,22 @@ function Subscribe() {
         Mobile,
         City,
         Company,
-        buisness,
+        business,
         address,
         amount,
       };
 
       try {
-        const response = await axios.post(
-          "http://your-node-backend-url/submit",
-          formData
-        );
+        const response = await axios.post("http://localhost:3000/distribute", {
+          FirstName: firstName,
+          LastName: lastName,
+          MobileNumber: Mobile,
+          City: City,
+          CompanyName: Company,
+          TypeOfBusiness: business,
+          ShippingAddress: address,
+          Amount: parseInt(amount),
+        });
 
         if (response.status === 200) {
           setIsSubmitted(true);
@@ -68,7 +75,7 @@ function Subscribe() {
           setMobile("");
           setCity("");
           setCompany("");
-          setBuisness("");
+          setbusiness("");
           setAddress("");
           setAmount("");
           setCaptchaValue(null);
@@ -91,7 +98,7 @@ function Subscribe() {
   return (
     <div className="bg-[#0B102C] text-white flex justify-center py-28 px-10">
       <div className="bg-gray-700 flex justify-center rounded-3xl px-4 sm:px-20 py-10 w-[700px]">
-        <form onSubmit={handleSubmit} className="w-full">
+        <form ref={formRef} onSubmit={handleSubmit} className="w-full">
           <h1 className="text-4xl pb-5 text-center">Subscribe today</h1>
           <div className="flex flex-col sm:flex-row sm:flex-wrap">
             <div className="w-full sm:w-1/2 sm:px-2">
@@ -155,7 +162,7 @@ function Subscribe() {
             </div>
             <div className="w-full sm:w-1/2 sm:px-2">
               <div className="py-4">
-                <label htmlFor="company">Company Name</label>
+                <label htmlFor="company">Company Name*</label>
                 <br />
                 <input
                   onChange={(e) => handleChange(e, setCompany)}
@@ -163,17 +170,20 @@ function Subscribe() {
                   name="company"
                   value={Company}
                 />
+                {errors.company && (
+                  <p className="text-red-500">{errors.company}</p>
+                )}
               </div>
             </div>
             <div className="w-full sm:w-1/2 sm:px-2">
               <div className="py-4">
-                <label htmlFor="buisness">Type of Buisness</label>
+                <label htmlFor="business">Type of business</label>
                 <br />
                 <input
-                  onChange={(e) => handleChange(e, setBuisness)}
+                  onChange={(e) => handleChange(e, setbusiness)}
                   className="text-gray-900 text-xl px-2 py-2 rounded-md border-none mt-2 w-full"
-                  name="buisness"
-                  value={buisness}
+                  name="business"
+                  value={business}
                 />
               </div>
             </div>

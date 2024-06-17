@@ -1,6 +1,6 @@
 import React from "react";
 
-function ComponentD1() {
+function ComponentD1({ handleScrollToForm }) {
   return (
     <div className="w-full flex flex-col-reverse text-white p-16 md:flex-row md:justify-between">
       <div className="flex flex-col justify-start  w-full md:px-10">
@@ -13,7 +13,7 @@ function ComponentD1() {
           Fill up your stores your parties, events , business gatherings with
           FreeWater.
           <br />
-          Never run out on supplies and beatify the sight
+          Never run out on supplies and beautify the sight
         </p>
         <div>
           <ul>
@@ -90,7 +90,10 @@ function ComponentD1() {
               </div>
             </li>
           </ul>
-          <button className="inline-flex items-center bg-[#FC581C] text-white py-2  px-5 focus:outline-none hover:bg-orange-300 rounded-full text-xl mt-4 md:mt-0">
+          <button
+            className="inline-flex items-center bg-[#FC581C] text-white py-2  px-5 focus:outline-none hover:bg-orange-300 rounded-full text-xl mt-4 md:mt-0"
+            onClick={handleScrollToForm}
+          >
             Subscribe Today
           </button>
         </div>

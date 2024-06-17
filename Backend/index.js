@@ -72,16 +72,7 @@ app.post("/distribute", async (req, res) => {
     ShippingAddress,
     Amount,
   } = req.body;
-  console.log(
-    FirstName,
-    LastName,
-    MobileNumber,
-    City,
-    CompanyName,
-    TypeOfBusiness,
-    ShippingAddress,
-    Amount
-  );
+
   try {
     if (!distributeFormSchema.safeParse(req.body).success) {
       res.status(400).json({ message: "Invalid Form Data" });

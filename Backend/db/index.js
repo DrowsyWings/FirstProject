@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("");
+mongoose.connect(
+  "mongodb+srv://drowsy:jIDUGjW8pUIA9ARp@cluster0.i4cdplo.mongodb.net/right2water"
+);
 
 const LandingPageFormSchema = new mongoose.Schema({
   FirstName: String,

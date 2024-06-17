@@ -24,6 +24,7 @@ const formSchema = zod.object({
 
 app.post("/", async (req, res) => {
   const { FirstName, LastName, MobileNumber, City } = req.body;
+  // console.log(FirstName, LastName, MobileNumber, City);
   try {
     if (!formSchema.safeParse(req.body).success) {
       res.status(400).json({ message: "Invalid Form Data" });
@@ -40,7 +41,7 @@ app.post("/", async (req, res) => {
       City,
     });
     await form.save();
-    res.status(201).json({ message: "Form Submitted Successfully" });
+    res.status(200).json({ message: "Form Submitted Successfully" });
   } catch (error) {
     console.log("Error", error);
     // res.status(400).json({ message: error.message });
@@ -71,6 +72,16 @@ app.post("/distribute", async (req, res) => {
     ShippingAddress,
     Amount,
   } = req.body;
+  console.log(
+    FirstName,
+    LastName,
+    MobileNumber,
+    City,
+    CompanyName,
+    TypeOfBusiness,
+    ShippingAddress,
+    Amount
+  );
   try {
     if (!distributeFormSchema.safeParse(req.body).success) {
       res.status(400).json({ message: "Invalid Form Data" });
@@ -98,7 +109,7 @@ app.post("/distribute", async (req, res) => {
       Amount,
     });
     await form.save();
-    res.status(201).json({ message: "Form Submitted Successfully" });
+    res.status(200).json({ message: "Form Submitted Successfully" });
   } catch (error) {
     console.log("Error", error);
   }
@@ -158,7 +169,7 @@ app.post("/advertise", async (req, res) => {
       Message,
     });
     await form.save();
-    res.status(201).json({ message: "Form Submitted Successfully" });
+    res.status(200).json({ message: "Form Submitted Successfully" });
   } catch (error) {
     console.log("Error", error);
   }
@@ -193,7 +204,7 @@ app.post("/contact", async (req, res) => {
       Message,
     });
     await form.save();
-    res.status(201).json({ message: "Form Submitted Successfully" });
+    res.status(200).json({ message: "Form Submitted Successfully" });
   } catch (error) {
     console.log("Error", error);
   }

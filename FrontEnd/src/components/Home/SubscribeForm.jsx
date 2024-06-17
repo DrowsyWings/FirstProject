@@ -67,10 +67,12 @@ function SubscribeForm() {
       const formData = { firstName, lastName, Mobile, City };
 
       try {
-        const response = await axios.post(
-          "http://your-node-backend-url/submit",
-          formData
-        );
+        const response = await axios.post("http://localhost:3000/", {
+          FirstName: firstName,
+          LastName: lastName,
+          MobileNumber: Mobile,
+          City: City,
+        });
 
         if (response.status === 200) {
           setIsSubmitted(true);

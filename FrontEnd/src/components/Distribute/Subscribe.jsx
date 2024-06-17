@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
-import axios from 'axios';
+import axios from "axios";
 
 function Subscribe() {
   const [firstName, setFirstName] = useState("");
@@ -19,7 +19,6 @@ function Subscribe() {
     setter(e.target.value);
   };
 
-
   //Submit Form
   const [errors, setErrors] = useState({});
   const handleSubmit = async (e) => {
@@ -28,184 +27,225 @@ function Subscribe() {
     if (!firstName) newErrors.firstName = "First name is required.";
     if (!lastName) newErrors.lastName = "Last name is required.";
     if (!Mobile) newErrors.mobile = "Mobile number is required.";
-    else if (!/^\d{10}$/.test(Mobile)) newErrors.mobile = 'Mobile number must be exactly 10 digits.';
+    else if (!/^\d{10}$/.test(Mobile))
+      newErrors.mobile = "Mobile number must be exactly 10 digits.";
     if (!City) newErrors.city = "City is required.";
     if (!address) newErrors.address = "Shipping Address is required";
     if (!amount) newErrors.amount = "Amount is Required";
     if (!captchaValue) newErrors.captcha = "Please verify the reCAPTCHA.";
 
     setErrors(newErrors);
-    
+
     if (Object.keys(newErrors).length === 0) {
-      console.log("Form submitted successfully:", {firstName});
+      console.log("Form submitted successfully:", { firstName });
       setIsSubmitting(true);
       setIsSubmitted(false);
 
       //Backend Code here....
-      const formData = {firstName,lastName,Mobile,City,Company,buisness,address,amount};
+      const formData = {
+        firstName,
+        lastName,
+        Mobile,
+        City,
+        Company,
+        buisness,
+        address,
+        amount,
+      };
 
       try {
-        const response = await axios.post('http://your-node-backend-url/submit', formData);
+        const response = await axios.post(
+          "http://your-node-backend-url/submit",
+          formData
+        );
 
         if (response.status === 200) {
           setIsSubmitted(true);
           setIsSubmitting(false);
 
-          setFirstName('');
-          setLastName('');
-          setMobile('');
-          setCity('');
-          setCompany('');
-          setBuisness('');
-          setAddress('');
-          setAmount('');
+          setFirstName("");
+          setLastName("");
+          setMobile("");
+          setCity("");
+          setCompany("");
+          setBuisness("");
+          setAddress("");
+          setAmount("");
           setCaptchaValue(null);
-        } 
-        else {
-          setErrors({ form: 'An error occurred while submitting the form. Please try again.' });
+        } else {
+          setErrors({
+            form: "An error occurred while submitting the form. Please try again.",
+          });
           setIsSubmitting(false);
         }
-      } 
-      catch (error) {
-        console.error('Error submitting the form:', error);
-        setErrors({ form: 'An error occurred while submitting the form. Please try again.' });
+      } catch (error) {
+        console.error("Error submitting the form:", error);
+        setErrors({
+          form: "An error occurred while submitting the form. Please try again.",
+        });
         setIsSubmitting(false);
       }
     }
   };
 
   return (
-    <div className='bg-[#0B102C] text-white flex justify-center py-28 px-10'>
-      <div className='bg-gray-700 flex justify-center rounded-3xl px-4 sm:px-20 py-10 w-[700px]'>
-        <form onSubmit={handleSubmit} className='w-full'>
-          <h1 className='text-4xl pb-5 text-center'>Subscribe today</h1>
-          <div className='flex flex-col sm:flex-row sm:flex-wrap'>
-            <div className='w-full sm:w-1/2 sm:px-2'>
-              <div className='py-4'>
-                <label htmlFor='firstName'>First Name*</label>
+    <div className="bg-[#0B102C] text-white flex justify-center py-28 px-10">
+      <div className="bg-gray-700 flex justify-center rounded-3xl px-4 sm:px-20 py-10 w-[700px]">
+        <form onSubmit={handleSubmit} className="w-full">
+          <h1 className="text-4xl pb-5 text-center">Subscribe today</h1>
+          <div className="flex flex-col sm:flex-row sm:flex-wrap">
+            <div className="w-full sm:w-1/2 sm:px-2">
+              <div className="py-4">
+                <label htmlFor="firstName">First Name*</label>
                 <br />
                 <input
                   onChange={(e) => handleChange(e, setFirstName)}
-                  className='text-gray-900 text-xl px-2 py-2 rounded-md border-none mt-2 w-full'
-                  name='firstName'
+                  className="text-gray-900 text-xl px-2 py-2 rounded-md border-none mt-2 w-full"
+                  name="firstName"
                   value={firstName}
                 />
-                {errors.firstName && <p className='text-red-500'>{errors.firstName}</p>}
+                {errors.firstName && (
+                  <p className="text-red-500">{errors.firstName}</p>
+                )}
               </div>
             </div>
-            <div className='w-full sm:w-1/2 sm:px-2'>
-              <div className='py-4'>
-                <label htmlFor='lastName'>Last Name*</label>
+            <div className="w-full sm:w-1/2 sm:px-2">
+              <div className="py-4">
+                <label htmlFor="lastName">Last Name*</label>
                 <br />
                 <input
                   onChange={(e) => handleChange(e, setLastName)}
-                  className='text-gray-900 text-xl px-2 py-2 rounded-md border-none mt-2 w-full'
-                  name='lastName'
+                  className="text-gray-900 text-xl px-2 py-2 rounded-md border-none mt-2 w-full"
+                  name="lastName"
                   value={lastName}
                 />
-                {errors.lastName && <p className='text-red-500'>{errors.lastName}</p>}
+                {errors.lastName && (
+                  <p className="text-red-500">{errors.lastName}</p>
+                )}
               </div>
             </div>
-            <div className='w-full sm:w-1/2 sm:px-2'>
-              <div className='py-4'>
-                <label htmlFor='mobile'>Mobile Number*</label>
+            <div className="w-full sm:w-1/2 sm:px-2">
+              <div className="py-4">
+                <label htmlFor="mobile">Mobile Number*</label>
                 <br />
                 <input
                   onChange={(e) => handleChange(e, setMobile)}
-                  className='text-gray-900 text-xl px-2 py-2 rounded-md border-none mt-2 w-full'
-                  name='mobile'
+                  className="text-gray-900 text-xl px-2 py-2 rounded-md border-none mt-2 w-full"
+                  name="mobile"
                   value={Mobile}
-                  type='tel'
+                  type="tel"
                 />
-                {errors.mobile && <p className='text-red-500'>{errors.mobile}</p>}
+                {errors.mobile && (
+                  <p className="text-red-500">{errors.mobile}</p>
+                )}
               </div>
             </div>
-            <div className='w-full sm:w-1/2 sm:px-2'>
-              <div className='py-4'>
-                <label htmlFor='city'>City*</label>
+            <div className="w-full sm:w-1/2 sm:px-2">
+              <div className="py-4">
+                <label htmlFor="city">City*</label>
                 <br />
                 <input
                   onChange={(e) => handleChange(e, setCity)}
-                  className='text-gray-900 text-xl px-2 py-2 rounded-md border-none mt-2 w-full'
-                  name='city'
+                  className="text-gray-900 text-xl px-2 py-2 rounded-md border-none mt-2 w-full"
+                  name="city"
                   value={City}
                 />
-                {errors.city && <p className='text-red-500'>{errors.city}</p>}
+                {errors.city && <p className="text-red-500">{errors.city}</p>}
               </div>
             </div>
-            <div className='w-full sm:w-1/2 sm:px-2'>
-              <div className='py-4'>
-                <label htmlFor='company'>Company Name</label>
+            <div className="w-full sm:w-1/2 sm:px-2">
+              <div className="py-4">
+                <label htmlFor="company">Company Name</label>
                 <br />
                 <input
                   onChange={(e) => handleChange(e, setCompany)}
-                  className='text-gray-900 text-xl px-2 py-2 rounded-md border-none mt-2 w-full'
-                  name='company'
+                  className="text-gray-900 text-xl px-2 py-2 rounded-md border-none mt-2 w-full"
+                  name="company"
                   value={Company}
                 />
               </div>
             </div>
-            <div className='w-full sm:w-1/2 sm:px-2'>
-              <div className='py-4'>
-                <label htmlFor='buisness'>Type of Buisness</label>
+            <div className="w-full sm:w-1/2 sm:px-2">
+              <div className="py-4">
+                <label htmlFor="buisness">Type of Buisness</label>
                 <br />
                 <input
                   onChange={(e) => handleChange(e, setBuisness)}
-                  className='text-gray-900 text-xl px-2 py-2 rounded-md border-none mt-2 w-full'
-                  name='buisness'
+                  className="text-gray-900 text-xl px-2 py-2 rounded-md border-none mt-2 w-full"
+                  name="buisness"
                   value={buisness}
                 />
               </div>
             </div>
-            <div className='w-full sm:w-1/2 sm:px-2'>
-              <div className='py-4'>
-                <label htmlFor='address'>Shipping Address*</label>
+            <div className="w-full sm:w-1/2 sm:px-2">
+              <div className="py-4">
+                <label htmlFor="address">Shipping Address*</label>
                 <br />
                 <input
                   onChange={(e) => handleChange(e, setAddress)}
-                  className='text-gray-900 text-xl px-2 py-2 rounded-md border-none mt-2 w-full'
-                  name='address'
+                  className="text-gray-900 text-xl px-2 py-2 rounded-md border-none mt-2 w-full"
+                  name="address"
                   value={address}
                 />
-                {errors.address && <p className='text-red-500'>{errors.address}</p>}
+                {errors.address && (
+                  <p className="text-red-500">{errors.address}</p>
+                )}
               </div>
             </div>
-            <div className='w-full sm:w-1/2 sm:px-2'>
-              <div className='py-4'>
-                <label htmlFor='amount'>Amount*</label>
+            <div className="w-full sm:w-1/2 sm:px-2">
+              <div className="py-4">
+                <label htmlFor="amount">Amount*</label>
                 <br />
                 <input
                   onChange={(e) => handleChange(e, setAmount)}
-                  className='text-gray-900 text-xl px-2 py-2 rounded-md border-none mt-2 w-full'
-                  name='amount'
+                  className="text-gray-900 text-xl px-2 py-2 rounded-md border-none mt-2 w-full"
+                  name="amount"
                   value={amount}
-                  type='number'
+                  type="number"
                 />
-                {errors.amount && <p className='text-red-500'>{errors.amount}</p>}
+                {errors.amount && (
+                  <p className="text-red-500">{errors.amount}</p>
+                )}
               </div>
             </div>
-            <div className='w-full flex justify-between sm:px-2 mt-2'>
-              <div className='py-4'>
-                <ReCAPTCHA sitekey="6LdXEPopAAAAAJENfwXUQs9aUZ-6r7FIM3X6VLGZ" onChange={setCaptchaValue} />
-                {errors.captcha && <p className='text-red-500'>{errors.captcha}</p>}
+            <div className="w-full flex justify-between sm:px-2 mt-2">
+              <div className="py-4">
+                <ReCAPTCHA
+                  sitekey="6LdXEPopAAAAAJENfwXUQs9aUZ-6r7FIM3X6VLGZ"
+                  onChange={setCaptchaValue}
+                />
+                {errors.captcha && (
+                  <p className="text-red-500">{errors.captcha}</p>
+                )}
               </div>
               <button
                 type="submit"
-                className='bg-[#FC581C] px-6 py-2 text-xl text-white rounded-md hover:bg-orange-300 hover:cursor-pointer active:bg-white active:text-orange-500 mt-8 h-12'
+                className="bg-[#FC581C] px-6 py-2 text-xl text-white rounded-md hover:bg-orange-300 hover:cursor-pointer active:bg-white active:text-orange-500 mt-8 h-12"
               >
-                {isSubmitting ? 'Submitting...' : 'Send'}
+                {isSubmitting ? "Submitting..." : "Send"}
               </button>
             </div>
             {isSubmitted && (
-              <div className='flex items-center mt-4 text-green-500 text-xl'>
-                <svg className='w-6 h-6 mr-2' fill='none' stroke='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
-                  <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M5 13l4 4L19 7'></path>
+              <div className="flex items-center mt-4 text-green-500 text-xl">
+                <svg
+                  className="w-6 h-6 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
                 </svg>
                 <span>Submitted Successfully!</span>
               </div>
             )}
             {errors.form && (
-              <div className='flex items-center mt-4 text-red-500'>
+              <div className="flex items-center mt-4 text-red-500">
                 <span className="w-64">{errors.form}</span>
               </div>
             )}
@@ -213,10 +253,7 @@ function Subscribe() {
         </form>
       </div>
     </div>
-  )
+  );
 }
 
-export default Subscribe
-
-
-
+export default Subscribe;

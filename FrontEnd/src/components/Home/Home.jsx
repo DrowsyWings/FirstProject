@@ -1,10 +1,10 @@
-import React from 'react'
-import Component1 from './Component1'
-import Component2 from './Component2'
-import Component3 from './Component3'
-import Component4 from './Component4'
-import Component5 from './Component5'
-import SubscribeForm from './SubscribeForm'
+import React from "react";
+import Component1 from "./Component1";
+import Component2 from "./Component2";
+import Component3 from "./Component3";
+import Component4 from "./Component4";
+import Component5 from "./Component5";
+import SubscribeForm from "./SubscribeForm";
 
 function Home() {
   return (
@@ -16,7 +16,7 @@ function Home() {
       <Component5></Component5>
       <SubscribeForm></SubscribeForm>
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;

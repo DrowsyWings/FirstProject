@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 
 function Footer() {
   return (
-    <footer className="bg-[#0B102C] text-white text-center py-8">
+    <footer className="bg-[#0F40A8] text-white text-center py-8">
       {/* Top white line in the center */}
       <div className="w-[1312px] mx-auto border-t border-white mb-8"></div>
 

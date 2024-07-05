@@ -5,8 +5,8 @@ import { Outlet } from 'react-router-dom'
 
 function Layout() {
   return (
-    <div className='relative'>
-      <HeaderNav/>
+    <div className=''>
+      <HeaderNav></HeaderNav>
       <Outlet/>
       <Footer/>
     </div>

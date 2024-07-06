@@ -2,40 +2,22 @@ import React, { useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import axios from "axios";
 
-function SubscribeForm() {
-  //FirstName
+function Subscribe({ formRef }) {
   const [firstName, setFirstName] = useState("");
-  const handleChange = (e) => {
-    setFirstName(e.target.value);
-  };
-
-  //Last Name
   const [lastName, setLastName] = useState("");
-  const handleChange2 = (e) => {
-    setLastName(e.target.value);
-  };
-
-  //Mobile Numer
   const [Mobile, setMobile] = useState("");
-  const handleChange3 = (e) => {
-    setMobile(e.target.value);
-  };
-
-  //City
   const [City, setCity] = useState("");
-  const handleChange4 = (e) => {
-    setCity(e.target.value);
-  };
-
-  //Captcha
-  const [captchaValue, setCaptchaValue] = useState(null);
-  const onChange = (value) => {
-    setCaptchaValue(value);
-  };
-
-  // Submission status state
+  const [Company, setCompany] = useState("");
+  const [business, setbusiness] = useState("");
+  const [reason, setReason] = useState("");
+  const [amount, setAmount] = useState(0);
+  const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleChange = (e, setter) => {
+    setter(e.target.value);
+  };
 
   //Submit Form
   const [errors, setErrors] = useState({});
@@ -48,30 +30,38 @@ function SubscribeForm() {
     else if (!/^\d{10}$/.test(Mobile))
       newErrors.mobile = "Mobile number must be exactly 10 digits.";
     if (!City) newErrors.city = "City is required.";
-    if (!captchaValue) newErrors.captcha = "Please verify the reCAPTCHA.";
 
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
-      console.log("Form submitted successfully:", {
-        firstName,
-        lastName,
-        Mobile,
-        City,
-        captchaValue,
-      });
+      console.log("Form submitted successfully:", { firstName });
       setIsSubmitting(true);
       setIsSubmitted(false);
 
       //Backend Code here....
-      const formData = { firstName, lastName, Mobile, City };
+      const formData = {
+        firstName,
+        lastName,
+        Mobile,
+        City,
+        Company,
+        business,
+        reason,
+        amount,
+        message,
+      };
 
       try {
-        const response = await axios.post("http://localhost:3000/", {
+        const response = await axios.post("http://localhost:3000/distribute", {
           FirstName: firstName,
           LastName: lastName,
           MobileNumber: Mobile,
           City: City,
+          CompanyName: Company,
+          TypeOfBusiness: business,
+          Reason: reason,
+          Amount: parseInt(amount),
+          Message: message,
         });
 
         if (response.status === 200) {
@@ -82,14 +72,20 @@ function SubscribeForm() {
           setLastName("");
           setMobile("");
           setCity("");
-          setCaptchaValue(null);
-        } else {
+          setCompany("");
+          setbusiness("");
+          setReason("");
+          setAmount("");
+          setMessage("");
+        } 
+        else {
           setErrors({
             form: "An error occurred while submitting the form. Please try again.",
           });
           setIsSubmitting(false);
         }
-      } catch (error) {
+      } 
+      catch (error) {
         console.error("Error submitting the form:", error);
         setErrors({
           form: "An error occurred while submitting the form. Please try again.",
@@ -100,112 +96,177 @@ function SubscribeForm() {
   };
 
   return (
-    <div className="bg-[#0B102C] text-white flex justify-center py-28">
-      <div className="bg-gray-700 flex justify-center rounded-3xl px-20 py-10">
-        <form onSubmit={handleSubmit}>
-          <h1 className="text-3xl pb-5 text-center">
-            Subscribe to get your FreeWater
-          </h1>
-          <div className="flex justify-center">
-            <div className="flex-col mr-10">
-              <div className="py-4">
-                <label htmlFor="firstName">First Name*</label>
-                <br></br>
-                <input
-                  onChange={handleChange}
-                  className="text-gray-900 text-xl px-2 py-2 rounded-md border-none mt-2"
-                  name="firstName"
-                  value={firstName}
-                ></input>
-                {errors.firstName && (
-                  <p className="text-red-500">{errors.firstName}</p>
-                )}
+      <div className="bg-[#0F40A8] flex justify-center  rounded-3xl px-4 sm:px-20 py-10 mt-[120px] mb-[120px] text-[#FEFEFF]">
+        <form ref={formRef} onSubmit={handleSubmit} className="w-full">
+          <h1 className="font-inter text-[45px] not-italic font-bold leading-normal pb-5 flex justify-self-start w-full">Get a Quote</h1>
+          <div className="flex flex-col">
+            <div className="flex flex-col sm:flex-row justify-between sm:gap-[80px]">
+              <div className="w-full sm:w-1/2 sm:px-2">
+                <div className="py-4">
+                  <label htmlFor="firstName" className="font-montserrat text-[22px] not-italic font-normal leading-normal">First Name*</label>
+                  <br />
+                  <input
+                    onChange={(e) => handleChange(e, setFirstName)}
+                    className="font-montserrat text-[22px] text-black not-italic font-normal leading-normal px-2 py-2 rounded-md border-none mt-2 w-[440px]"
+                    name="firstName"
+                    value={firstName}
+                  />
+                  {errors.firstName && (
+                    <p className="text-red-500">{errors.firstName}</p>
+                  )}
+                </div>
               </div>
-              <div className="py-4">
-                <label htmlFor="mobile">Mobile Number*</label>
-                <br></br>
-                <input
-                  onChange={handleChange3}
-                  className="text-gray-900 text-xl px-2 py-2 rounded-md border-none mt-2"
-                  name="mobile"
-                  value={Mobile}
-                  type="tel"
-                ></input>
-                {errors.mobile && (
-                  <p className="text-red-500">{errors.mobile}</p>
-                )}
-              </div>
-              <div className="py-4 mt-2">
-                <ReCAPTCHA
-                  sitekey="6LdXEPopAAAAAJENfwXUQs9aUZ-6r7FIM3X6VLGZ"
-                  onChange={onChange}
-                />
-                {errors.captcha && (
-                  <p className="text-red-500">{errors.captcha}</p>
-                )}
+              <div className="w-full sm:w-1/2 sm:px-2">
+                <div className="py-4">
+                  <label htmlFor="lastName" className="font-montserrat text-[22px] not-italic font-normal leading-normal">Last Name*</label>
+                  <br />
+                  <input
+                    onChange={(e) => handleChange(e, setLastName)}
+                    className="font-montserrat text-[22px] text-black not-italic font-normal leading-normal px-2 py-2 rounded-md border-none mt-2 w-[440px]"
+                    name="lastName"
+                    value={lastName}
+                  />
+                  {errors.lastName && (
+                    <p className="text-red-500">{errors.lastName}</p>
+                  )}
+                </div>
               </div>
             </div>
-            <div>
-              <div className="py-4">
-                <label htmlFor="lastName">Last Name*</label>
-                <br />
-                <input
-                  onChange={handleChange2}
-                  className="text-gray-900 text-xl px-2 py-2 rounded-md border-none mt-2"
-                  name="lastName"
-                  value={lastName}
-                ></input>
-                {errors.lastName && (
-                  <p className="text-red-500">{errors.lastName}</p>
-                )}
-              </div>
-              <div className="py-4">
-                <label htmlFor="city">City*</label>
-                <br />
-                <input
-                  onChange={handleChange4}
-                  className="text-gray-900 text-xl px-2 py-2 rounded-md border-none mt-2"
-                  name="city"
-                  value={City}
-                ></input>
-                {errors.city && <p className="text-red-500">{errors.city}</p>}
-              </div>
-              <button
-                type="submit"
-                className="bg-[#FC581C] px-3 py-2 text-xl text-white rounded-md hover:bg-orange-300 hover:cursor-pointer active:bg-white active:text-orange-500 mt-8 ml-44"
-              >
-                Send
-              </button>
-              {isSubmitted && (
-                <div className="flex items-center mt-4 text-green-500 ml-4 text-xl">
-                  <svg
-                    className="w-6 h-6 mr-2"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M5 13l4 4L19 7"
-                    ></path>
-                  </svg>
-                  <span>Submitted Successfully!</span>
+            <div className="flex flex-col sm:flex-row justify-between sm:gap-[80px]">
+              <div className="w-full sm:w-1/2 sm:px-2">
+                <div className="py-4">
+                  <label htmlFor="mobile" className="font-montserrat text-[22px] not-italic font-normal leading-normal">Mobile Number*</label>
+                  <br />
+                  <input
+                    onChange={(e) => handleChange(e, setMobile)}
+                    className="font-montserrat text-[22px] text-black not-italic font-normal leading-normal px-2 py-2 rounded-md border-none mt-2 w-[440px]"
+                    name="mobile"
+                    value={Mobile}
+                    type="tel"
+                  />
+                  {errors.mobile && (
+                    <p className="text-red-500">{errors.mobile}</p>
+                  )}
                 </div>
-              )}
-              {errors.form && (
-                <div className="flex items-center mt-4 text-red-500">
-                  <span className="w-64">{errors.form}</span>
+              </div>
+              <div className="w-full sm:w-1/2 sm:px-2">
+                <div className="py-4">
+                  <label htmlFor="city" className="font-montserrat text-[22px] not-italic font-normal leading-normal">City*</label>
+                  <br />
+                  <input
+                    onChange={(e) => handleChange(e, setCity)}
+                    className="font-montserrat text-[22px] text-black not-italic font-normal leading-normal px-2 py-2 rounded-md border-none mt-2 w-[440px]"
+                    name="city"
+                    value={City}
+                  />
+                  {errors.city && <p className="text-red-500">{errors.city}</p>}
                 </div>
-              )}
+              </div>
             </div>
+            <div className="flex flex-col sm:flex-row justify-between sm:gap-[80px]">
+              <div className="w-full sm:w-1/2 sm:px-2">
+                <div className="py-4">
+                  <label htmlFor="company" className="font-montserrat text-[22px] not-italic font-normal leading-normal">Company Name</label>
+                  <br />
+                  <input
+                    onChange={(e) => handleChange(e, setCompany)}
+                    className="font-montserrat text-[22px] text-black not-italic font-normal leading-normal px-2 py-2 rounded-md border-none mt-2 w-[440px]"
+                    name="company"
+                    value={Company}
+                  />
+                </div>
+              </div>
+              <div className="w-full sm:w-1/2 sm:px-2">
+                <div className="py-4">
+                  <label htmlFor="business" className="font-montserrat text-[22px] not-italic font-normal leading-normal">Type of business</label>
+                  <br />
+                  <input
+                    onChange={(e) => handleChange(e, setbusiness)}
+                    className="font-montserrat text-[22px] text-black not-italic font-normal leading-normal px-2 py-2 rounded-md border-none mt-2 w-[440px]"
+                    name="business"
+                    value={business}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col sm:flex-row justify-between sm:gap-[80px]">
+              <div className="w-full sm:w-1/2 sm:px-2">
+                <div className="py-4">
+                  <label htmlFor="reason" className="font-montserrat text-[22px] not-italic font-normal leading-normal">'What do you want to Advertise?'</label>
+                  <br />
+                  <input
+                    onChange={(e) => handleChange(e, setReason)}
+                    className="font-montserrat text-[22px] text-black not-italic font-normal leading-normal px-2 py-2 rounded-md border-none mt-2 w-[440px]"
+                    name="reason"
+                    value={reason}
+                  />
+                </div>
+              </div>
+              <div className="w-full sm:w-1/2 sm:px-2">
+                <div className="py-4">
+                  <label htmlFor="amount" className="font-montserrat text-[22px] not-italic font-normal leading-normal">How many bottles?</label>
+                  <br />
+                  <input
+                    onChange={(e) => handleChange(e, setAmount)}
+                    className="font-montserrat text-[22px] text-black not-italic font-normal leading-normal px-2 py-2 rounded-md border-none mt-2 w-[440px]"
+                    name="amount"
+                    value={amount}
+                    type="number"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col sm:flex-row justify-between sm:gap-[80px]">
+              <div className="w-full sm:w-1/2 sm:px-2">
+                <div className="py-4">
+                  <label htmlFor="message" className="font-montserrat text-[22px] not-italic font-normal leading-normal">Message</label>
+                    <br />
+                    <textarea
+                      onChange={(e) => handleChange(e, setMessage)}
+                      className="font-montserrat text-[22px] h-[128px] text-black not-italic font-normal leading-normal px-2 py-2 rounded-md border-none mt-2 w-[440px]"
+                      name="message"
+                      value={message}
+                      type="text"
+                    />
+                </div>
+              </div>
+              <div className="w-full flex justify-center items-center">
+                <button
+                  type="submit"
+                  className="bg-[#FC581C] font-inter w-[190px] h-[70px] px-[64px] py-[20px] text-[24px] text-[#FFF] rounded-[9px] hover:bg-orange-300 hover:cursor-pointer active:bg-white active:text-orange-500"
+                >
+                  {isSubmitting ? "Submitting..." : "Send"}
+                </button>
+              </div>
+            </div>
+            {isSubmitted && (
+              <div className="flex items-center mt-4 text-green-500 text-xl">
+                <svg
+                  className="w-6 h-6 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+                <span>Submitted Successfully!</span>
+              </div>
+            )}
+            {errors.form && (
+              <div className="flex items-center mt-4 text-red-500">
+                <span className="w-64">{errors.form}</span>
+              </div>
+            )}
           </div>
         </form>
       </div>
-    </div>
   );
 }
 
-export default SubscribeForm;
+export default Subscribe;

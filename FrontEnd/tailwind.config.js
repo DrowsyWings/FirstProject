@@ -10,6 +10,7 @@ export default {
         nunito: ['Nunito', 'sans-serif'],
         montserrat: ['Montserrat', 'sans-serif'],
         playfair: ['Playfair Display','sans-serif'],
+        inter: ['Inter','sans-serif'],
       },
       backgroundImage: {
         'custom-gradient': 'linear-gradient(90deg, #EDF7FF -10.07%, #D6ECFF 40.09%, #B6DEFF 89.71%, #ABDAFF 99.99%)',

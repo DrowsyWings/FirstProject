@@ -69,16 +69,16 @@ function HeaderNav() {
                 <NavLink to="/" className="text-2xl" onClick={handleClick}>Home</NavLink>
               </li>
               <li>
-                <NavLink to="/" className="text-2xl" onClick={handleClick}>About me</NavLink>
+                <NavLink to="/advertise" className="text-2xl" onClick={handleClick}>Advertise</NavLink>
               </li>
               <li>
-                <NavLink to="/" className="text-2xl" onClick={handleClick}>Experience</NavLink>
+                <NavLink to="/distribute" className="text-2xl" onClick={handleClick}>Distribute</NavLink>
               </li>
               <li>
-                <NavLink to="/" className="text-2xl" onClick={handleClick}>Projects</NavLink>
+                <NavLink to="/faq" className="text-2xl" onClick={handleClick}>FAQs</NavLink>
               </li>
               <li>
-                <NavLink to="/" className="text-2xl" onClick={handleClick}>Hire Me</NavLink>
+                <NavLink to="/contact" className="text-2xl" onClick={handleClick}>Contact Us</NavLink>
               </li>
             </ul>
           </div>

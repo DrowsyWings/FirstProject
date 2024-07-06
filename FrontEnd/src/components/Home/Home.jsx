@@ -1,13 +1,13 @@
 import React from "react";
-import MainPoster from "./MainPoster";
 import Component1 from "./Component1";
+import Container from "./Container";
 
 
 function Home() {
   return (
     <div className="">
-      <MainPoster></MainPoster>
       <Component1></Component1>
+      <Container></Container>
     </div>
   );
 }

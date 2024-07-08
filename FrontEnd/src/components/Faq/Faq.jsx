@@ -1,5 +1,5 @@
 import React from "react";
-import HeaderNav from "../ContactUs/ContactHeader";
+import HeaderNav from "../Header/HeaderNav";
 
 function Faq() {
   return (

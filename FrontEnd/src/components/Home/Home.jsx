@@ -1,7 +1,7 @@
 import React from "react";
 import Component1 from "./Component1";
 import Container from "./Container";
-import HeaderNav from "../ContactUs/ContactHeader";
+import HeaderNav from "../Header/HeaderNav";
 
 function Home() {
   return (

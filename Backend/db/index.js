@@ -39,8 +39,10 @@ const ContactUsFormSchema = new mongoose.Schema({
   LastName: String,
   MobileNumber: String,
   City: String,
-  Subject: String,
-  Message: String,
+  CompanyName: String,
+  TypeOfBusiness: String,
+  AdvertiseContent: String,
+  NoOfBottles: Number,
 });
 
 const AdvertisementForm = mongoose.model(

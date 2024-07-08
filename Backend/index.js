@@ -172,18 +172,30 @@ const contactFormSchema = zod.object({
   FirstName: zod.string(),
   LastName: zod.string(),
   MobileNumber: zod.string().min(10),
-  Subject: zod.string(),
-  Message: zod.string().optional(),
+  City: zod.string(),
+  CompanyName: zod.string().optional(),
+  TypeOfBusiness: zod.string().optional(),
+  AdvertiseContent: zod.string().optional(),
+  NoOfBottles: zod.number(),
 });
 
 app.post("/contact", async (req, res) => {
-  const { FirstName, LastName, MobileNumber, Subject, Message } = req.body;
+  const {
+    FirstName,
+    LastName,
+    MobileNumber,
+    City,
+    CompanyName,
+    TypeOfBusiness,
+    AdvertiseContent,
+    NoOfBottles,
+  } = req.body;
   try {
     if (!contactFormSchema.safeParse(req.body).success) {
       res.status(400).json({ message: "Invalid Form Data" });
     }
 
-    if (!FirstName || !LastName || !MobileNumber || !Subject) {
+    if (!FirstName || !LastName || !MobileNumber || !City || !NoOfBottles) {
       res.status(400).json({ message: "Please Fill All Fields" });
     }
 
@@ -191,8 +203,11 @@ app.post("/contact", async (req, res) => {
       FirstName,
       LastName,
       MobileNumber,
-      Subject,
-      Message,
+      City,
+      CompanyName,
+      TypeOfBusiness,
+      AdvertiseContent,
+      NoOfBottles,
     });
     await form.save();
     res.status(200).json({ message: "Form Submitted Successfully" });

@@ -1,8 +1,10 @@
 import React from "react";
+import HeaderNav from "../ContactUs/ContactHeader";
 
 function Advertise() {
   return (
     <>
+      <HeaderNav></HeaderNav>
       <section className=" w-full ">
         <div className=" w-full min-h-screen relative bg-blue-800">
           {/* <div className="w-full h-[9px] left-[633px] top-auto  " /> */}

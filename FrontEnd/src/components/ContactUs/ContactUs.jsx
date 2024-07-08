@@ -1,17 +1,19 @@
 import React from "react";
 import ContactDetails from "./ContactDetails";
 import ContactForm from "./ContactForm";
+import ContactHeader from "./ContactHeader";
 
 function ContactUs() {
   return (
-    <div className="text-white">
-      <h1 className=" text-center py-5 sm:text-7xl text-3xl">Let's progress together!</h1>
-      <h2 className="text-center py-5 px-6 sm:px-0 sm:text-xl text-sm">Please fill out the quick form and we'll be in touch with lightning speed.</h2>
-      <div className="flex flex-col sm:flex-row sm:justify-center">
-        <ContactForm></ContactForm>
-        <ContactDetails></ContactDetails>
+    <>
+      <div className="min-h-screen bg-gradient-to-r from-blue-50 via-blue-100 to-sky-200">
+        <ContactHeader />
+        <div className="container mx-auto px-4 py-8">
+          <ContactDetails />
+          <ContactForm />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

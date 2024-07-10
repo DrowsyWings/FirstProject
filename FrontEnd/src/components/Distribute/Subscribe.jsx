@@ -9,7 +9,7 @@ function Subscribe({ formRef }) {
   const [City, setCity] = useState("");
   const [Company, setCompany] = useState("");
   const [business, setbusiness] = useState("");
-  const [address, setAddress] = useState("");
+  const [whatDoYouWantToAdvertise, setWhatDoYouWantToAdvertise] = useState("");
   const [amount, setAmount] = useState(0);
   const [captchaValue, setCaptchaValue] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -31,7 +31,9 @@ function Subscribe({ formRef }) {
       newErrors.mobile = "Mobile number must be exactly 10 digits.";
     if (!Company) newErrors.company = "Company Name is required.";
     if (!City) newErrors.city = "City is required.";
-    if (!address) newErrors.address = "Shipping Address is required";
+    if (!whatDoYouWantToAdvertise)
+      newErrors.whatDoYouWantToAdvertise =
+        "What do you want to advertise is required.";
     if (!amount) newErrors.amount = "Amount is Required";
     if (!captchaValue) newErrors.captcha = "Please verify the reCAPTCHA.";
 
@@ -50,10 +52,10 @@ function Subscribe({ formRef }) {
         City,
         Company,
         business,
-        address,
+        whatDoYouWantToAdvertise,
         amount,
       };
-
+      //TODO : update the distribute endpoint
       try {
         const response = await axios.post("http://localhost:3000/distribute", {
           FirstName: firstName,
@@ -62,7 +64,7 @@ function Subscribe({ formRef }) {
           City: City,
           CompanyName: Company,
           TypeOfBusiness: business,
-          ShippingAddress: address,
+          ToAdvertise: whatDoYouWantToAdvertise,
           Amount: parseInt(amount),
         });
 
@@ -76,7 +78,7 @@ function Subscribe({ formRef }) {
           setCity("");
           setCompany("");
           setbusiness("");
-          setAddress("");
+          setWhatDoYouWantToAdvertise("");
           setAmount("");
           setCaptchaValue(null);
         } else {
@@ -96,8 +98,8 @@ function Subscribe({ formRef }) {
   };
 
   return (
-    <div className="bg-[#0B102C] text-white flex justify-center py-28 px-10">
-      <div className="bg-gray-700 flex justify-center rounded-3xl px-4 sm:px-20 py-10 w-[700px]">
+    <div className=" text-white flex justify-center py-28 px-8  ">
+      <div className="bg-blue-800  flex justify-center rounded-3xl px-4 sm:px-20 py-10 mx-56">
         <form ref={formRef} onSubmit={handleSubmit} className="w-full">
           <h1 className="text-4xl pb-5 text-center">Subscribe today</h1>
           <div className="flex flex-col sm:flex-row sm:flex-wrap">
@@ -189,16 +191,20 @@ function Subscribe({ formRef }) {
             </div>
             <div className="w-full sm:w-1/2 sm:px-2">
               <div className="py-4">
-                <label htmlFor="address">Shipping Address*</label>
+                <label htmlFor="What do you want to advertise">
+                  What do you want to advertise?*
+                </label>
                 <br />
                 <input
                   onChange={(e) => handleChange(e, setAddress)}
                   className="text-gray-900 text-xl px-2 py-2 rounded-md border-none mt-2 w-full"
-                  name="address"
-                  value={address}
+                  name="What do you want to advertise"
+                  value={whatDoYouWantToAdvertise}
                 />
-                {errors.address && (
-                  <p className="text-red-500">{errors.address}</p>
+                {errors.whatDoYouWantToAdvertise && (
+                  <p className="text-red-500">
+                    {errors.whatDoYouWantToAdvertise}
+                  </p>
                 )}
               </div>
             </div>

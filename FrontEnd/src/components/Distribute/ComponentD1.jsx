@@ -1,19 +1,19 @@
 import React from "react";
+// import { banner } from "../../assets/banner.png";
 
 function ComponentD1({ handleScrollToForm }) {
   return (
-    <div className="w-full flex flex-col-reverse text-white p-16 md:flex-row md:justify-between">
+    <div className="w-full flex flex-col-reverse text-zinc-950 p-16 md:flex-row md:justify-between">
       <div className="flex flex-col justify-start  w-full md:px-10">
-        <h1 className="text-7xl font-bold">
+        <h1 className="text-8xl font-bold text-zinc-950 mt-10">
           Distribute
           <br />
           FreeWater
         </h1>
         <p className="w-full py-10 text-xl">
-          Fill up your stores your parties, events , business gatherings with
-          FreeWater.
+          Fill up your stores your parties, events , business gatherings
           <br />
-          Never run out on supplies and beautify the sight
+          with FreeWater.
         </p>
         <div>
           <ul>
@@ -100,6 +100,7 @@ function ComponentD1({ handleScrollToForm }) {
       </div>
       <div className=" flex flex-col justify-center sm:px-20 md:px-20 mb-20 md:mb-0 px-0">
         <img
+          //TODO : Add png image
           src=""
           className="w-[350px] h-[350px] md:w-[398px] md:h-[398px]"
         ></img>

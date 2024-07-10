@@ -9,7 +9,7 @@ function Distribute() {
     formRef.current.scrollIntoView({ behavior: "smooth" });
   };
   return (
-    <div>
+    <div className=" bg-gradient-to-r from-blue-50 via-blue-100 to-sky-200">
       <HeaderNav></HeaderNav>
       <ComponentD1 handleScrollToForm={handleScrollToForm}></ComponentD1>
       <Subscribe formRef={formRef}></Subscribe>

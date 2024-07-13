@@ -6,4 +6,47 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
 }
-  
+
+.bordered-word-container {
+  position: relative;
+  display: inline-block;
+}
+
+.bordered-word {
+  border: 2px solid #F7F7FC;
+  display: inline-block;
+  position: relative;
+}
+
+.bordered-word::before,
+.bordered-word::after,
+.bordered-word-container::before,
+.bordered-word-container::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #F7F7FC;
+  border-radius: 50%;
+}
+
+.bordered-word::before {
+  top: -4px;
+  left: -4px;
+}
+
+.bordered-word::after {
+  bottom: -4px;
+  right: -4px;
+}
+
+.bordered-word-container::before {
+  top: -4px;
+  right: -4px;
+}
+
+.bordered-word-container::after {
+  bottom: -4px;
+  left: -4px;
+}
+

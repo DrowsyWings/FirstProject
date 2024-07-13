@@ -5,11 +5,11 @@ import HeaderNav from "../Header/HeaderNav";
 
 function Home() {
   return (
-    <div className="">
+    <>
       <HeaderNav></HeaderNav>
       <Component1></Component1>
       <Container></Container>
-    </div>
+    </>
   );
 }
 

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import ReCAPTCHA from "react-google-recaptcha";
 import axios from "axios";
 
 function Subscribe({ formRef }) {
@@ -96,18 +95,18 @@ function Subscribe({ formRef }) {
   };
 
   return (
-      <div className="bg-[#0F40A8] flex justify-center  rounded-3xl px-4 sm:px-20 py-10 mt-[120px] mb-[120px] text-[#FEFEFF]">
+      <div className="bg-[#0F40A8] flex justify-center  rounded-3xl px-4  sm:px-20 py-10 mt-[60px] sm:mt-[120px] mb-[40px] sm:mb-[120px] text-[#FEFEFF] mx-[25px] sm:mx-0">
         <form ref={formRef} onSubmit={handleSubmit} className="w-full">
-          <h1 className="font-inter text-[45px] not-italic font-bold leading-normal pb-5 flex justify-self-start w-full">Get a Quote</h1>
+          <h1 className="font-inter text-[30px] sm:text-[45px] not-italic font-bold leading-normal pb-5 flex justify-self-start w-full">Get a Quote</h1>
           <div className="flex flex-col">
             <div className="flex flex-col sm:flex-row justify-between sm:gap-[80px]">
               <div className="w-full sm:w-1/2 sm:px-2">
                 <div className="py-4">
-                  <label htmlFor="firstName" className="font-montserrat text-[22px] not-italic font-normal leading-normal">First Name*</label>
+                  <label htmlFor="firstName" className="font-montserrat text-[16px] sm:text-[22px] not-italic font-normal leading-normal">First Name*</label>
                   <br />
                   <input
                     onChange={(e) => handleChange(e, setFirstName)}
-                    className="font-montserrat text-[22px] text-black not-italic font-normal leading-normal px-2 py-2 rounded-md border-none mt-2 w-[440px]"
+                    className="font-montserrat text-[16px] sm:text-[22px] text-black not-italic font-normal leading-normal px-2 py-2 rounded-md border-none mt-2 w-[280px] sm:w-[440px]"
                     name="firstName"
                     value={firstName}
                   />
@@ -118,11 +117,11 @@ function Subscribe({ formRef }) {
               </div>
               <div className="w-full sm:w-1/2 sm:px-2">
                 <div className="py-4">
-                  <label htmlFor="lastName" className="font-montserrat text-[22px] not-italic font-normal leading-normal">Last Name*</label>
+                  <label htmlFor="lastName" className="font-montserrat text-[16px] sm:text-[22px] not-italic font-normal leading-normal">Last Name*</label>
                   <br />
                   <input
                     onChange={(e) => handleChange(e, setLastName)}
-                    className="font-montserrat text-[22px] text-black not-italic font-normal leading-normal px-2 py-2 rounded-md border-none mt-2 w-[440px]"
+                    className="font-montserrat text-[16px] sm:text-[22px] text-black not-italic font-normal leading-normal px-2 py-2 rounded-md border-none mt-2 w-[280px] sm:w-[440px]"
                     name="lastName"
                     value={lastName}
                   />
@@ -135,11 +134,11 @@ function Subscribe({ formRef }) {
             <div className="flex flex-col sm:flex-row justify-between sm:gap-[80px]">
               <div className="w-full sm:w-1/2 sm:px-2">
                 <div className="py-4">
-                  <label htmlFor="mobile" className="font-montserrat text-[22px] not-italic font-normal leading-normal">Mobile Number*</label>
+                  <label htmlFor="mobile" className="font-montserrat text-[16px] sm:text-[22px] not-italic font-normal leading-normal">Mobile Number*</label>
                   <br />
                   <input
                     onChange={(e) => handleChange(e, setMobile)}
-                    className="font-montserrat text-[22px] text-black not-italic font-normal leading-normal px-2 py-2 rounded-md border-none mt-2 w-[440px]"
+                    className="font-montserrat text-[16px] sm:text-[22px] text-black not-italic font-normal leading-normal px-2 py-2 rounded-md border-none mt-2 w-[280px] sm:w-[440px]"
                     name="mobile"
                     value={Mobile}
                     type="tel"
@@ -151,11 +150,11 @@ function Subscribe({ formRef }) {
               </div>
               <div className="w-full sm:w-1/2 sm:px-2">
                 <div className="py-4">
-                  <label htmlFor="city" className="font-montserrat text-[22px] not-italic font-normal leading-normal">City*</label>
+                  <label htmlFor="city" className="font-montserrat text-[16px] sm:text-[22px] not-italic font-normal leading-normal">City*</label>
                   <br />
                   <input
                     onChange={(e) => handleChange(e, setCity)}
-                    className="font-montserrat text-[22px] text-black not-italic font-normal leading-normal px-2 py-2 rounded-md border-none mt-2 w-[440px]"
+                    className="font-montserrat text-[16px] sm:text-[22px] text-black not-italic font-normal leading-normal px-2 py-2 rounded-md border-none mt-2 w-[280px] sm:w-[440px]"
                     name="city"
                     value={City}
                   />
@@ -166,11 +165,11 @@ function Subscribe({ formRef }) {
             <div className="flex flex-col sm:flex-row justify-between sm:gap-[80px]">
               <div className="w-full sm:w-1/2 sm:px-2">
                 <div className="py-4">
-                  <label htmlFor="company" className="font-montserrat text-[22px] not-italic font-normal leading-normal">Company Name</label>
+                  <label htmlFor="company" className="font-montserrat text-[16px] sm:text-[22px] not-italic font-normal leading-normal">Company Name</label>
                   <br />
                   <input
                     onChange={(e) => handleChange(e, setCompany)}
-                    className="font-montserrat text-[22px] text-black not-italic font-normal leading-normal px-2 py-2 rounded-md border-none mt-2 w-[440px]"
+                    className="font-montserrat text-[16px] sm:text-[22px] text-black not-italic font-normal leading-normal px-2 py-2 rounded-md border-none mt-2 w-[280px] sm:w-[440px]"
                     name="company"
                     value={Company}
                   />
@@ -178,11 +177,11 @@ function Subscribe({ formRef }) {
               </div>
               <div className="w-full sm:w-1/2 sm:px-2">
                 <div className="py-4">
-                  <label htmlFor="business" className="font-montserrat text-[22px] not-italic font-normal leading-normal">Type of business</label>
+                  <label htmlFor="business" className="font-montserrat text-[16px] sm:text-[22px] not-italic font-normal leading-normal">Type of business</label>
                   <br />
                   <input
                     onChange={(e) => handleChange(e, setbusiness)}
-                    className="font-montserrat text-[22px] text-black not-italic font-normal leading-normal px-2 py-2 rounded-md border-none mt-2 w-[440px]"
+                    className="font-montserrat text-[16px] sm:text-[22px] text-black not-italic font-normal leading-normal px-2 py-2 rounded-md border-none mt-2 w-[280px] sm:w-[440px]"
                     name="business"
                     value={business}
                   />
@@ -192,11 +191,11 @@ function Subscribe({ formRef }) {
             <div className="flex flex-col sm:flex-row justify-between sm:gap-[80px]">
               <div className="w-full sm:w-1/2 sm:px-2">
                 <div className="py-4">
-                  <label htmlFor="reason" className="font-montserrat text-[22px] not-italic font-normal leading-normal">'What do you want to Advertise?'</label>
+                  <label htmlFor="reason" className="font-montserrat text-[16px] sm:text-[22px] not-italic font-normal leading-normal">'What do you want to Advertise?'</label>
                   <br />
                   <input
                     onChange={(e) => handleChange(e, setReason)}
-                    className="font-montserrat text-[22px] text-black not-italic font-normal leading-normal px-2 py-2 rounded-md border-none mt-2 w-[440px]"
+                    className="font-montserrat text-[16px] sm:text-[22px] text-black not-italic font-normal leading-normal px-2 py-2 rounded-md border-none mt-2 w-[280px] sm:w-[440px]"
                     name="reason"
                     value={reason}
                   />
@@ -204,11 +203,11 @@ function Subscribe({ formRef }) {
               </div>
               <div className="w-full sm:w-1/2 sm:px-2">
                 <div className="py-4">
-                  <label htmlFor="amount" className="font-montserrat text-[22px] not-italic font-normal leading-normal">How many bottles?</label>
+                  <label htmlFor="amount" className="font-montserrat text-[16px] sm:text-[22px] not-italic font-normal leading-normal">How many bottles?</label>
                   <br />
                   <input
                     onChange={(e) => handleChange(e, setAmount)}
-                    className="font-montserrat text-[22px] text-black not-italic font-normal leading-normal px-2 py-2 rounded-md border-none mt-2 w-[440px]"
+                    className="font-montserrat text-[16px] sm:text-[22px] text-black not-italic font-normal leading-normal px-2 py-2 rounded-md border-none mt-2 w-[280px] sm:w-[440px]"
                     name="amount"
                     value={amount}
                     type="number"
@@ -219,21 +218,21 @@ function Subscribe({ formRef }) {
             <div className="flex flex-col sm:flex-row justify-between sm:gap-[80px]">
               <div className="w-full sm:w-1/2 sm:px-2">
                 <div className="py-4">
-                  <label htmlFor="message" className="font-montserrat text-[22px] not-italic font-normal leading-normal">Message</label>
+                  <label htmlFor="message" className="font-montserrat text-[16px] sm:text-[22px] not-italic font-normal leading-normal">Message</label>
                     <br />
                     <textarea
                       onChange={(e) => handleChange(e, setMessage)}
-                      className="font-montserrat text-[22px] h-[128px] text-black not-italic font-normal leading-normal px-2 py-2 rounded-md border-none mt-2 w-[440px]"
+                      className="font-montserrat text-[16px] sm:text-[22px] h-[128px] text-black not-italic font-normal leading-normal px-2 py-2 rounded-md border-none mt-2 w-[280px] sm:w-[440px]"
                       name="message"
                       value={message}
                       type="text"
                     />
                 </div>
               </div>
-              <div className="w-full flex justify-center items-center">
+              <div className=" flex justify-center items-center">
                 <button
                   type="submit"
-                  className="bg-[#FC581C] font-inter w-[190px] h-[70px] px-[64px] py-[20px] text-[24px] text-[#FFF] rounded-[9px] hover:bg-orange-300 hover:cursor-pointer active:bg-white active:text-orange-500"
+                  className="bg-[#FC581C] font-inter w-[280px] sm:w-[190px] h-[70px] px-[64px] py-[20px] text-[24px] text-[#FFF] rounded-[9px] hover:bg-orange-300 hover:cursor-pointer active:bg-white active:text-orange-500"
                 >
                   {isSubmitting ? "Submitting..." : "Send"}
                 </button>

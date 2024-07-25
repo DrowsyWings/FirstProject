@@ -10,7 +10,7 @@ function HeaderNav() {
   };
 
   return (
-    <div className='absolute top-0 left-0 w-full z-10'>
+    <div className='absolute top-0 left-0 w-full z-20'>
       <nav className=" w-full py-3 bg-transparent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
@@ -56,8 +56,8 @@ function HeaderNav() {
       </nav>
 
       {/* Sidebar */}
-      <div className={`fixed inset-y-0 right-0 transform ${isMenuOpen ? "translate-x-0" : "translate-x-full"} transition-transform duration-300 ease-in-out bg-blue-900 bg-opacity-50 backdrop-blur-lg z-30 lg:hidden`}>
-        <div className="p-6">
+      <div className={`fixed inset-y-0 right-0 transform ${isMenuOpen ? "translate-x-0" : "translate-x-full"} transition-transform duration-300 ease-in-out bg-blue-900 bg-opacity-50 backdrop-blur-lg z-30 lg:hidden w-[200px]`}>
+        <div className="p-6 ">
           <button onClick={handleClick} className="text-white">
             <svg className="h-8 w-8" stroke="currentColor" fill="none" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
@@ -66,19 +66,19 @@ function HeaderNav() {
           <div className="mt-10">
             <ul className="space-y-4 text-white">
               <li>
-                <NavLink to="/" className="text-2xl" onClick={handleClick}>Home</NavLink>
+                <NavLink to="/" className="sm:text-2xl text-xl" onClick={handleClick}>Home</NavLink>
               </li>
               <li>
-                <NavLink to="/advertise" className="text-2xl" onClick={handleClick}>Advertise</NavLink>
+                <NavLink to="/advertise" className="sm:text-2xl text-xl" onClick={handleClick}>Advertise</NavLink>
               </li>
               <li>
-                <NavLink to="/distribute" className="text-2xl" onClick={handleClick}>Distribute</NavLink>
+                <NavLink to="/distribute" className="sm:text-2xl text-xl" onClick={handleClick}>Distribute</NavLink>
               </li>
               <li>
-                <NavLink to="/faq" className="text-2xl" onClick={handleClick}>FAQs</NavLink>
+                <NavLink to="/faq" className=" sm:text-2xl text-xl" onClick={handleClick}>FAQs</NavLink>
               </li>
               <li>
-                <NavLink to="/contact" className="text-2xl" onClick={handleClick}>Contact Us</NavLink>
+                <NavLink to="/contact" className="sm:text-2xl text-xl" onClick={handleClick}>Contact Us</NavLink>
               </li>
             </ul>
           </div>

@@ -28,27 +28,27 @@ function Footer() {
       <div className="mb-4 flex justify-center space-x-4 py-4">
         <ul className="flex justify-evenly w-[620px]">
           <li>
-            <Link to="/contact-us" className="hover:underline">
+            <Link to="/contact-us" className="hover:underline text-sm">
               Contacts
             </Link>
           </li>
           <li>
-            <Link to="/distribute" className="hover:underline">
+            <Link to="/distribute" className="hover:underline text-sm">
               Distribute
             </Link>
           </li>
           <li>
-            <Link to="/" className="hover:underline">
+            <Link to="/" className="hover:underline text-sm">
               Order
             </Link>
           </li>
           <li>
-            <Link to="/advertise" className="hover:underline">
+            <Link to="/advertise" className="hover:underline text-sm">
               Advertise
             </Link>
           </li>
           <li>
-            <Link to="/faq" className="hover:underline">
+            <Link to="/faq" className="hover:underline text-sm">
               FAQs
             </Link>
           </li>

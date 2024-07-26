@@ -13,13 +13,13 @@ import callIcon from '../../assets/callIcon.svg'
 
 function Component2() {
   return (
-    <div className='flex flex-col justify-center items-center relative px-[260px]'>
-        <div className='flex justify-center relative'>
+    <div className='flex flex-col justify-center items-center relative px-[360px]'>
+        <div className='flex justify-center relatives'>
             <img src={bottle}></img>
-            <img src={line1} className='absolute left-0 top-[75px]'></img>
-            <img src={line2} className='absolute right-0 top-[229px]'></img>
-            <img src={line3} className='absolute left-0 top-[435px]'></img>
-            <img src={line4} className='absolute right-0 top-[561px]'></img>
+            <img src={line1} className='absolute left-[250px] top-[75px]'></img>
+            <img src={line2} className='absolute right-[250px] top-[229px]'></img>
+            <img src={line3} className='absolute left-[250px] top-[435px]'></img>
+            <img src={line4} className='absolute right-[250px] top-[561px]'></img>
         </div>
         <div className='flex flex-col items-center absolute top-0 left-0'>
           <img src={n1}></img>

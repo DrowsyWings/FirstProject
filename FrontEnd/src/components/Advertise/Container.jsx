@@ -6,7 +6,7 @@ import SubscribeForm from '../Home/SubscribeForm'
 
 function Container() {
   return (
-    <div className='w-full bg-[#0F143E] flex flex-col items-center pt-[120px] relative'>
+    <div className='w-full bg-[#0F143E] flex flex-col items-center pt-[100px] sm:pt-[120px] relative'>
       <Component1></Component1>
       <Component2></Component2>
       <Component3></Component3>

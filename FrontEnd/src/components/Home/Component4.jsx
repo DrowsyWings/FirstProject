@@ -49,7 +49,7 @@ function Component4() {
                 </div>
             </div>
             <div className='w-1/3 flex flex-col'>
-                <img src={image02} className='sm:w-[180px] w-[84px] sm:h-[180px] h-[170px] rounded-t-[33px] sm:rounded-t-[72px]'></img>
+                <img src={image02} className='sm:w-[180px] w-[84px] sm:h-[360px] h-[170px] rounded-t-[33px] sm:rounded-t-[72px]'></img>
                 <img src={image03} className='rounded-full sm:w-[180px] w-[84px] sm:h-[180px] h-[84px]'></img>
             </div>
         </div>

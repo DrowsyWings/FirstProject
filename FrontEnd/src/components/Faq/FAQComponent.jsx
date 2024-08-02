@@ -5,10 +5,10 @@ const FaqItem = ({ question, answer }) => {
 
   return (
     <div className="w-full max-w-4xl mx-auto ">
-      <div className="border-b  border-black">
+      <div className="border-b border-black">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="w-full flex justify-start   items-center py-8 px-4 sm:px-6 focus:outline-none"
+          className="w-full flex justify-between items-center py-8 px-4 sm:px-6 focus:outline-none"
         >
           <span className="text-black text-lg sm:text-xl md:text-2xl font-semibold font-['Inter'] leading-normal sm:leading-relaxed md:leading-9 text-left">
             {question}

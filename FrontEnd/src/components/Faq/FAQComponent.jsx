@@ -4,22 +4,24 @@ const FaqItem = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <>
-      <div className=" items-start h-full">
+    <div className="w-full max-w-4xl mx-auto ">
+      <div className="border-b  border-black">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="w-full flex flex-wrap justify-between p-2 px-32   rounded-md focus:outline-none"
+          className="w-full flex justify-start   items-center py-8 px-4 sm:px-6 focus:outline-none"
         >
-          <div className="text-black text-2xl font-semibold  leading-9 font-['Inter']">
+          <span className="text-black text-lg sm:text-xl md:text-2xl font-semibold font-['Inter'] leading-normal sm:leading-relaxed md:leading-9 text-left">
             {question}
-          </div>
+          </span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className={`${isOpen ? "transform rotate-180" : ""} w-6 mt-2`}
+            className={`${
+              isOpen ? "transform rotate-180" : ""
+            } w-6 h-6 flex-shrink-0 ml-4`}
           >
             <path
               strokeLinecap="round"
@@ -30,12 +32,14 @@ const FaqItem = ({ question, answer }) => {
         </button>
 
         {isOpen && (
-          <div className="flex flex-col p-2 px-32 pb-4 justify-start h-full text-[#070707] text-2xl font-normal font-['Inter'] leading-9">
-            {answer}
+          <div className="py-4 px-4 sm:px-6">
+            <p className="text-[#070707] text-base sm:text-lg md:text-xl font-normal font-['Inter'] leading-normal sm:leading-relaxed md:leading-7">
+              {answer}
+            </p>
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

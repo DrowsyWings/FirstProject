@@ -6,9 +6,11 @@ import FaqItem from "./FAQComponent";
 function Faq() {
   return (
     <div className=" bg-gradient-to-r from-[#edf7ff] via-[#d6ecff] to-[#abdaff] ">
-      <HeaderNav></HeaderNav>
+      <div className=" text-black">
+        <HeaderNav />
+      </div>
       <HeadingComponent />
-      <div className=" grid grid-flow-row gap-14">
+      <div className=" pt-16 grid grid-flow-row-dense  ">
         <FaqItem
           question="How is AquaFree free?"
           answer="AquaFree is paid for by ads that are printed directly onto the durable bottles. One Rs per beverage is donated to charity to fight the global water crisis."

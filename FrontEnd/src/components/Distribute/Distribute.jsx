@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import Subscribe from "./Subscribe";
 import ComponentD1 from "./ComponentD1";
-import HeaderNav from "../ContactUs/ContactHeader";
+import HeaderNav from "../Header/HeaderNav";
 
 function Distribute() {
   const formRef = useRef(null);
@@ -9,7 +9,7 @@ function Distribute() {
     formRef.current.scrollIntoView({ behavior: "smooth" });
   };
   return (
-    <div className=" bg-gradient-to-r from-blue-50 via-blue-100 to-sky-200">
+    <div className=" bg-gradient-to-r from-blue-50 via-blue-100 to-sky-200 relative">
       <HeaderNav></HeaderNav>
       <ComponentD1 handleScrollToForm={handleScrollToForm}></ComponentD1>
       <Subscribe formRef={formRef}></Subscribe>

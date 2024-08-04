@@ -10,7 +10,7 @@ function Faq() {
         <HeaderNav />
       </div>
       <HeadingComponent />
-      <div className=" pt-16 grid grid-flow-row-dense  ">
+      <div className="pt-4 sm:pt-16 grid grid-flow-row-dense pb-10">
         <FaqItem
           question="How is AquaFree free?"
           answer="AquaFree is paid for by ads that are printed directly onto the durable bottles. One Rs per beverage is donated to charity to fight the global water crisis."

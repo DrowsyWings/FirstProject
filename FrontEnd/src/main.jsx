@@ -23,7 +23,7 @@ const router = createBrowserRouter(
       <Route path="distribute" element={<Distribute />}></Route>
       <Route path="hall-of-fame" element={<HallOfFame />}></Route>
       <Route path="faq" element={<Faq />}></Route>
-      <Route path="contact-us" element={<ContactUs />}></Route>
+      <Route path="contactus" element={<ContactUs />}></Route>
     </Route>
   )
 );

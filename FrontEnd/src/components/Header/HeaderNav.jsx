@@ -31,7 +31,7 @@ function HeaderNav() {
               <NavLink to="/faq" className={`${isWhiteText ? 'text-white' : 'text-black'} hover:text-blue-500 px-5 py-2 rounded-md`}>FAQs</NavLink>
             </div>
             <div className="hidden lg:flex items-center">
-              <Link to="/contact-us">
+              <Link to="/contactus">
                 <button className={`${isWhiteText ? 'text-white' : 'text-black'} inline-flex items-center bg-transparent border-2 border-current py-2 px-5 focus:outline-none hover:bg-gray-700 rounded-full text-base mt-4 md:mt-0`}>
                   Contact Us
                   <svg
@@ -82,7 +82,7 @@ function HeaderNav() {
                 <NavLink to="/faq" className={`sm:text-2xl text-xl ${isWhiteText ? 'text-white' : 'text-black'}`} onClick={handleClick}>FAQs</NavLink>
               </li>
               <li>
-                <NavLink to="/contact" className={`sm:text-2xl text-xl ${isWhiteText ? 'text-white' : 'text-black'}`} onClick={handleClick}>Contact Us</NavLink>
+                <NavLink to="/contactus" className={`sm:text-2xl text-xl ${isWhiteText ? 'text-white' : 'text-black'}`} onClick={handleClick}>Contact Us</NavLink>
               </li>
             </ul>
           </div>

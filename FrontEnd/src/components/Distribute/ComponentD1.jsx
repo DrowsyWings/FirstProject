@@ -9,7 +9,7 @@ function ComponentD1({ handleScrollToForm }) {
   return (
     <div className="w-full flex flex-col-reverse text-zinc-950 p-4 sm:p-16 md:flex-row md:justify-between relative">
       <div className="flex flex-col justify-start  w-full md:px-10">
-        <h1 className="w-full text-[40px] sm:text-4xl md:text-6xl lg:text-8xl font-extrabold text-zinc-950 mt-10">
+        <h1 className="w-full text-[40px] sm:text-4xl md:text-6xl lg:text-8xl font-extrabold text-zinc-950 mt-10 text-start md:text-center" >
           Distribute
           <br/>
           FreeWater
@@ -23,20 +23,20 @@ function ComponentD1({ handleScrollToForm }) {
           <ul>
             <li>
               <div className="flex justify-start py-6">
-                <img src={dots}></img>
-                <p className="px-3 text-xl">Increase Foot Traffic</p>
+                <img src={dots} className="w-[16px] sm:w-[18px] md-w-auto"></img>
+                <p className="px-3 text-[8px] md:text-xl">Increase Foot Traffic</p>
               </div>
             </li>
             <li>
               <div className="flex justify-start py-6">
-                <img src={dots}></img>
-                <p className="px-3 text-xl">Improve Sales</p>
+                <img src={dots} className="w-[16px] sm:w-[18px] md-w-auto"></img>
+                <p className="px-3 text-[8px] md:text-xl">Improve Sales</p>
               </div>
             </li>
             <li>
               <div className="flex justify-start py-6">
-                <img src={dots}></img>
-                <p className="px-3 text-xl">Gain Amazing PR</p>
+                <img src={dots} className="w-[16px] sm:w-[18px] md-w-auto"></img>
+                <p className="px-3 text-[8px] md:text-xl">Gain Amazing PR</p>
               </div>
             </li>
           </ul>

@@ -6,11 +6,11 @@ function Subscribe({ formRef }) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [Mobile, setMobile] = useState("");
-  const [City, setCity] = useState("");
-  const [Company, setCompany] = useState("");
-  const [business, setbusiness] = useState("");
+  const [city, setCity] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [typeOfBusiness, setTypeOfBusiness] = useState("");
   const [whatDoYouWantToAdvertise, setWhatDoYouWantToAdvertise] = useState("");
-  const [amount, setAmount] = useState(0);
+  const [howManyBottles, setHowManyBottles] = useState("");
   const [captchaValue, setCaptchaValue] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -29,12 +29,9 @@ function Subscribe({ formRef }) {
     if (!Mobile) newErrors.mobile = "Mobile number is required.";
     else if (!/^\d{10}$/.test(Mobile))
       newErrors.mobile = "Mobile number must be exactly 10 digits.";
-    if (!Company) newErrors.company = "Company Name is required.";
-    if (!City) newErrors.city = "City is required.";
-    if (!whatDoYouWantToAdvertise)
-      newErrors.whatDoYouWantToAdvertise =
-        "What do you want to advertise is required.";
-    if (!amount) newErrors.amount = "Amount is Required";
+    if (!city) newErrors.city = "City is required.";
+    if (!howManyBottles)
+      newErrors.howManyBottles = "No. of bottles is required.";
     if (!captchaValue) newErrors.captcha = "Please verify the reCAPTCHA.";
 
     setErrors(newErrors);
@@ -43,29 +40,28 @@ function Subscribe({ formRef }) {
       console.log("Form submitted successfully:", { firstName });
       setIsSubmitting(true);
       setIsSubmitted(false);
-
-      //Backend Code here....
+      
       const formData = {
         firstName,
         lastName,
         Mobile,
-        City,
-        Company,
-        business,
+        city,
+        companyName,
+        typeOfBusiness,
         whatDoYouWantToAdvertise,
-        amount,
+        howManyBottles,
       };
-      //TODO : update the distribute endpoint
+
       try {
         const response = await axios.post("http://localhost:3000/distribute", {
           FirstName: firstName,
           LastName: lastName,
           MobileNumber: Mobile,
-          City: City,
-          CompanyName: Company,
-          TypeOfBusiness: business,
-          ToAdvertise: whatDoYouWantToAdvertise,
-          Amount: parseInt(amount),
+          City: city,
+          CompanyName: companyName,
+          TypeOfBusiness: typeOfBusiness,
+          WhatDoYouWantToAdvertise: whatDoYouWantToAdvertise,
+          HowManyBottles: howManyBottles,
         });
 
         if (response.status === 200) {
@@ -76,10 +72,10 @@ function Subscribe({ formRef }) {
           setLastName("");
           setMobile("");
           setCity("");
-          setCompany("");
-          setbusiness("");
+          setCompanyName("");
+          setTypeOfBusiness("");
           setWhatDoYouWantToAdvertise("");
-          setAmount("");
+          setHowManyBottles("");
           setCaptchaValue(null);
         } else {
           setErrors({
@@ -98,18 +94,24 @@ function Subscribe({ formRef }) {
   };
 
   return (
-    <div className=" text-white flex justify-center py-28 px-8  ">
-      <div className="bg-blue-800  flex justify-center rounded-3xl px-4 sm:px-20 py-10 mx-56">
+    <div className="bg-blue-800 text-white  rounded-[26px] justify-center inline-bl sm:px-8 md:w-[75%]">
+      <div className=" flex justify-center rounded-3xl px-4 py-6 md:py-10 w-full">
         <form ref={formRef} onSubmit={handleSubmit} className="w-full">
-          <h1 className="text-4xl pb-5 text-center">Subscribe today</h1>
-          <div className="flex flex-col sm:flex-row sm:flex-wrap">
-            <div className="w-full sm:w-1/2 sm:px-2">
-              <div className="py-4">
+          <div className="flex flex-col">
+            <div className="text-[24px] sm:text-[32px] text-neutral-100 md:text-[45px] font-bold font-['Inter'] text-center">
+              Subscribe Today
+            </div>
+            <div className="text-neutral-300 text-[16px] md:text-[24px] font-medium font-['Inter'] text-center mt-4 md:mt-8">
+              Please fill out the quick form and we'll be in touch with
+              lightning speed
+            </div>
+            <div className="flex flex-col justify-center sm:flex-row sm:justify-evenly w-full lg:gap-20">
+              <div className="py-4 w-full">
                 <label htmlFor="firstName">First Name*</label>
                 <br />
                 <input
                   onChange={(e) => handleChange(e, setFirstName)}
-                  className="text-gray-900 text-xl px-2 py-2 rounded-md border-none mt-2 w-full"
+                  className="text-gray-900 text-[16px] md:text-[22px] px-2 py-2 rounded-md border-none mt-2 w-full"
                   name="firstName"
                   value={firstName}
                 />
@@ -117,14 +119,12 @@ function Subscribe({ formRef }) {
                   <p className="text-red-500">{errors.firstName}</p>
                 )}
               </div>
-            </div>
-            <div className="w-full sm:w-1/2 sm:px-2">
-              <div className="py-4">
+              <div className="py-4 w-full sm:ml-6">
                 <label htmlFor="lastName">Last Name*</label>
                 <br />
                 <input
                   onChange={(e) => handleChange(e, setLastName)}
-                  className="text-gray-900 text-xl px-2 py-2 rounded-md border-none mt-2 w-full"
+                  className="text-gray-900 text-[16px] md:text-[22px] px-2 py-2 rounded-md border-none mt-2 w-full"
                   name="lastName"
                   value={lastName}
                 />
@@ -133,13 +133,13 @@ function Subscribe({ formRef }) {
                 )}
               </div>
             </div>
-            <div className="w-full sm:w-1/2 sm:px-2">
-              <div className="py-4">
+            <div className="flex flex-col justify-center sm:flex-row sm:justify-evenly w-full lg:gap-20">
+              <div className="py-4 w-full">
                 <label htmlFor="mobile">Mobile Number*</label>
                 <br />
                 <input
                   onChange={(e) => handleChange(e, setMobile)}
-                  className="text-gray-900 text-xl px-2 py-2 rounded-md border-none mt-2 w-full"
+                  className="text-gray-900 text-[16px] md:text-[22px] px-2 py-2 rounded-md border-none mt-2 w-full"
                   name="mobile"
                   value={Mobile}
                   type="tel"
@@ -148,57 +148,57 @@ function Subscribe({ formRef }) {
                   <p className="text-red-500">{errors.mobile}</p>
                 )}
               </div>
-            </div>
-            <div className="w-full sm:w-1/2 sm:px-2">
-              <div className="py-4">
+              <div className="py-4 w-full sm:ml-6">
                 <label htmlFor="city">City*</label>
                 <br />
                 <input
                   onChange={(e) => handleChange(e, setCity)}
-                  className="text-gray-900 text-xl px-2 py-2 rounded-md border-none mt-2 w-full"
+                  className="text-gray-900 text-[16px] md:text-[22px] px-2 py-2 rounded-md border-none mt-2 w-full"
                   name="city"
-                  value={City}
+                  value={city}
                 />
                 {errors.city && <p className="text-red-500">{errors.city}</p>}
               </div>
             </div>
-            <div className="w-full sm:w-1/2 sm:px-2">
-              <div className="py-4">
-                <label htmlFor="company">Company Name*</label>
+            <div className="flex flex-col justify-center sm:flex-row sm:justify-evenly w-full lg:gap-20">
+              <div className="py-4 w-full">
+                <label htmlFor="companyName">Company Name</label>
                 <br />
                 <input
-                  onChange={(e) => handleChange(e, setCompany)}
-                  className="text-gray-900 text-xl px-2 py-2 rounded-md border-none mt-2 w-full"
-                  name="company"
-                  value={Company}
+                  onChange={(e) => handleChange(e, setCompanyName)}
+                  className="text-gray-900 text-[16px] md:text-[22px] px-2 py-2 rounded-md border-none mt-2 w-full"
+                  name="companyName"
+                  value={companyName}
+                  type="tel"
                 />
-                {errors.company && (
-                  <p className="text-red-500">{errors.company}</p>
+                {errors.companyName && (
+                  <p className="text-red-500">{errors.companyName}</p>
+                )}
+              </div>
+              <div className="py-4 w-full sm:ml-6">
+                <label htmlFor="typeOfBusiness">Type of Business</label>
+                <br />
+                <input
+                  onChange={(e) => handleChange(e, setTypeOfBusiness)}
+                  className="text-gray-900 text-[16px] md:text-[22px] px-2 py-2 rounded-md border-none mt-2 w-full"
+                  name="typeOfBusiness"
+                  value={typeOfBusiness}
+                />
+                {errors.typeOfBusiness && (
+                  <p className="text-red-500">{errors.typeOfBusiness}</p>
                 )}
               </div>
             </div>
-            <div className="w-full sm:w-1/2 sm:px-2">
-              <div className="py-4">
-                <label htmlFor="business">Type of business</label>
-                <br />
-                <input
-                  onChange={(e) => handleChange(e, setbusiness)}
-                  className="text-gray-900 text-xl px-2 py-2 rounded-md border-none mt-2 w-full"
-                  name="business"
-                  value={business}
-                />
-              </div>
-            </div>
-            <div className="w-full sm:w-1/2 sm:px-2">
-              <div className="py-4">
-                <label htmlFor="What do you want to advertise">
-                  What do you want to advertise?*
+            <div className="flex flex-col justify-center sm:flex-row sm:justify-evenly w-full lg:gap-20">
+              <div className="py-4 w-full">
+                <label htmlFor="whatDoYouWantToAdvertise">
+                  What do you want to advertise?
                 </label>
                 <br />
                 <input
-                  onChange={(e) => handleChange(e, setAddress)}
-                  className="text-gray-900 text-xl px-2 py-2 rounded-md border-none mt-2 w-full"
-                  name="What do you want to advertise"
+                  onChange={(e) => handleChange(e, setWhatDoYouWantToAdvertise)}
+                  className="text-gray-900 text-[16px] md:text-[22px] px-2 py-2 rounded-md border-none mt-2 w-full"
+                  name="whatDoYouWantToAdvertise"
                   value={whatDoYouWantToAdvertise}
                 />
                 {errors.whatDoYouWantToAdvertise && (
@@ -207,25 +207,22 @@ function Subscribe({ formRef }) {
                   </p>
                 )}
               </div>
-            </div>
-            <div className="w-full sm:w-1/2 sm:px-2">
-              <div className="py-4">
-                <label htmlFor="amount">Amount*</label>
+              <div className=" py-4 w-full sm:ml-6">
+                <label htmlFor="howManyBottles">How many bottles?</label>
                 <br />
                 <input
-                  onChange={(e) => handleChange(e, setAmount)}
-                  className="text-gray-900 text-xl px-2 py-2 rounded-md border-none mt-2 w-full"
-                  name="amount"
-                  value={amount}
-                  type="number"
+                  onChange={(e) => handleChange(e, setHowManyBottles)}
+                  className="text-gray-900 text-[16px] md:text-[22px] px-2 py-2 rounded-md border-none mt-2 w-full"
+                  name="howManyBottles"
+                  value={howManyBottles}
                 />
-                {errors.amount && (
-                  <p className="text-red-500">{errors.amount}</p>
+                {errors.howManyBottles && (
+                  <p className="text-red-500">{errors.howManyBottles}</p>
                 )}
               </div>
             </div>
-            <div className="w-full flex justify-between sm:px-2 mt-2">
-              <div className="py-4">
+            <div className="flex flex-col justify-center sm:flex-row sm:justify-evenly w-full lg:gap-20">
+              <div className="py-4 w-full">
                 <ReCAPTCHA
                   sitekey="6LdXEPopAAAAAJENfwXUQs9aUZ-6r7FIM3X6VLGZ"
                   onChange={setCaptchaValue}
@@ -236,7 +233,7 @@ function Subscribe({ formRef }) {
               </div>
               <button
                 type="submit"
-                className="bg-[#FC581C] px-6 py-2 text-xl text-white rounded-md hover:bg-orange-300 hover:cursor-pointer active:bg-white active:text-orange-500 mt-8 h-12"
+                className="bg-[#FC581C] px-6 py-2 text-[16px] md:text-[22px] text-white rounded-md hover:bg-orange-300 hover:cursor-pointer active:bg-white active:text-orange-500 mt-8 h-12 sm-w[50px]"
               >
                 {isSubmitting ? "Submitting..." : "Send"}
               </button>

@@ -40,7 +40,7 @@ function Component2() {
         <div className="text-stone-300 text-[8px] sm:text-2xl font-normal font-['Inter'] mt-4 sm:mt-10">Alumi-Tec Bottle</div>
         <div className="text-stone-300 text-[4px] sm:text-xs font-normal font-['Inter']">16 fl oz / 500 ml</div>
         <div className='mt-[7px] sm:mt-[36px] mb-[74px]'>
-            <Link to="/contact-us">
+            <Link to="/contactus">
               <button className="bg-transparent hover:bg-gray-700 rounded-full">
                 <img src={callIcon} className='w-[43px] h-[10px] sm:w-auto sm:h-auto'></img>
               </button>

@@ -22,7 +22,7 @@ function Component1() {
             <p className='font-montserrat text-[#F7F7F7] text-[12px] sm:text-[20px] font-normal not-italic leading-1'>We provide sustainable advertising medium that imprints your brand in everyone’s mind at dirt cheap cost.</p>
           </div>
           <div className='mt-[33px] sm:mt-[76px]'>
-            <Link to="/contact-us">
+            <Link to="/contactus">
               <button className="bg-transparent hover:bg-gray-700 rounded-full w-[85.3px] sm:w-auto">
                 <img src={callIcon}></img>
               </button>

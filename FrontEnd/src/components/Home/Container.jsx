@@ -15,7 +15,9 @@ function Container() {
         <Component3></Component3>
         <Component4></Component4>
         <Component5></Component5>
-        <SubscribeForm></SubscribeForm>
+        <div className='w-full px-4 py-10 lg:py-24 flex justify-center items-center'>
+          <SubscribeForm></SubscribeForm>
+        </div>
     </div>
   )
 }

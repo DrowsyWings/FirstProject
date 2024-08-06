@@ -29,7 +29,7 @@ function Component1() {
             </Link>
           </div>
         </div>
-        <div className='absolute left-0  sm:hidden'>
+        <div className='absolute left-2  sm:hidden'>
           <h1 className="font-montserrat font-semibold sm:font-bold text-[#4971B6] text-[150px] sm:text-[300px] leading-none transform -rotate-90 m-0 p-0">
             bottle
           </h1>

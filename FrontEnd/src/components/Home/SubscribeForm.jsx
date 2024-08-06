@@ -1,16 +1,17 @@
 import React, { useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 import axios from "axios";
 
 function Subscribe({ formRef }) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [Mobile, setMobile] = useState("");
-  const [City, setCity] = useState("");
-  const [Company, setCompany] = useState("");
-  const [business, setbusiness] = useState("");
-  const [reason, setReason] = useState("");
-  const [amount, setAmount] = useState(0);
-  const [message, setMessage] = useState("");
+  const [city, setCity] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [typeOfBusiness, setTypeOfBusiness] = useState("");
+  const [whatDoYouWantToAdvertise, setWhatDoYouWantToAdvertise] = useState("");
+  const [howManyBottles, setHowManyBottles] = useState("");
+  const [captchaValue, setCaptchaValue] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -28,7 +29,10 @@ function Subscribe({ formRef }) {
     if (!Mobile) newErrors.mobile = "Mobile number is required.";
     else if (!/^\d{10}$/.test(Mobile))
       newErrors.mobile = "Mobile number must be exactly 10 digits.";
-    if (!City) newErrors.city = "City is required.";
+    if (!city) newErrors.city = "City is required.";
+    if (!howManyBottles)
+      newErrors.howManyBottles = "No. of bottles is required.";
+    if (!captchaValue) newErrors.captcha = "Please verify the reCAPTCHA.";
 
     setErrors(newErrors);
 
@@ -36,18 +40,16 @@ function Subscribe({ formRef }) {
       console.log("Form submitted successfully:", { firstName });
       setIsSubmitting(true);
       setIsSubmitted(false);
-
-      //Backend Code here....
+      
       const formData = {
         firstName,
         lastName,
         Mobile,
-        City,
-        Company,
-        business,
-        reason,
-        amount,
-        message,
+        city,
+        companyName,
+        typeOfBusiness,
+        whatDoYouWantToAdvertise,
+        howManyBottles,
       };
 
       try {
@@ -55,12 +57,11 @@ function Subscribe({ formRef }) {
           FirstName: firstName,
           LastName: lastName,
           MobileNumber: Mobile,
-          City: City,
-          CompanyName: Company,
-          TypeOfBusiness: business,
-          Reason: reason,
-          Amount: parseInt(amount),
-          Message: message,
+          City: city,
+          CompanyName: companyName,
+          TypeOfBusiness: typeOfBusiness,
+          WhatDoYouWantToAdvertise: whatDoYouWantToAdvertise,
+          HowManyBottles: howManyBottles,
         });
 
         if (response.status === 200) {
@@ -71,20 +72,18 @@ function Subscribe({ formRef }) {
           setLastName("");
           setMobile("");
           setCity("");
-          setCompany("");
-          setbusiness("");
-          setReason("");
-          setAmount("");
-          setMessage("");
-        } 
-        else {
+          setCompanyName("");
+          setTypeOfBusiness("");
+          setWhatDoYouWantToAdvertise("");
+          setHowManyBottles("");
+          setCaptchaValue(null);
+        } else {
           setErrors({
             form: "An error occurred while submitting the form. Please try again.",
           });
           setIsSubmitting(false);
         }
-      } 
-      catch (error) {
+      } catch (error) {
         console.error("Error submitting the form:", error);
         setErrors({
           form: "An error occurred while submitting the form. Please try again.",
@@ -95,148 +94,149 @@ function Subscribe({ formRef }) {
   };
 
   return (
-      <div className="bg-[#0F40A8] flex justify-center  rounded-3xl px-4  sm:px-20 py-10 mt-[60px] sm:mt-[120px] mb-[40px] sm:mb-[120px] text-[#FEFEFF] mx-[25px] sm:mx-0">
+    <div className="bg-blue-800 text-white  rounded-[26px] justify-center inline-bl sm:px-8 md:w-[80%]">
+      <div className=" flex justify-center rounded-3xl px-4 py-6 md:py-10 w-full">
         <form ref={formRef} onSubmit={handleSubmit} className="w-full">
-          <h1 className="font-inter text-[30px] sm:text-[45px] not-italic font-bold leading-normal pb-5 flex justify-self-start w-full">Get a Quote</h1>
           <div className="flex flex-col">
-            <div className="flex flex-col sm:flex-row justify-between sm:gap-[80px]">
-              <div className="w-full sm:w-1/2 sm:px-2">
-                <div className="py-4">
-                  <label htmlFor="firstName" className="font-montserrat text-[16px] sm:text-[22px] not-italic font-normal leading-normal">First Name*</label>
-                  <br />
-                  <input
-                    onChange={(e) => handleChange(e, setFirstName)}
-                    className="font-montserrat text-[16px] sm:text-[22px] text-black not-italic font-normal leading-normal px-2 py-2 rounded-md border-none mt-2 w-[280px] sm:w-[440px]"
-                    name="firstName"
-                    value={firstName}
-                  />
-                  {errors.firstName && (
-                    <p className="text-red-500">{errors.firstName}</p>
-                  )}
-                </div>
+            <div className="text-[24px] sm:text-[32px] text-neutral-100 md:text-[45px] font-bold font-['Inter'] text-center">
+              Get a Quote
+            </div>
+            <div className="text-neutral-300 text-[16px] md:text-[24px] font-medium font-['Inter'] text-center mt-4 md:mt-8">
+              Please fill out the quick form and we'll be in touch with
+              lightning speed
+            </div>
+            <div className="flex flex-col justify-center sm:flex-row sm:justify-evenly w-full lg:gap-20">
+              <div className="py-4 w-full">
+                <label htmlFor="firstName">First Name*</label>
+                <br />
+                <input
+                  onChange={(e) => handleChange(e, setFirstName)}
+                  className="text-gray-900 text-[16px] md:text-[22px] px-2 py-2 rounded-md border-none mt-2 w-full"
+                  name="firstName"
+                  value={firstName}
+                />
+                {errors.firstName && (
+                  <p className="text-red-500">{errors.firstName}</p>
+                )}
               </div>
-              <div className="w-full sm:w-1/2 sm:px-2">
-                <div className="py-4">
-                  <label htmlFor="lastName" className="font-montserrat text-[16px] sm:text-[22px] not-italic font-normal leading-normal">Last Name*</label>
-                  <br />
-                  <input
-                    onChange={(e) => handleChange(e, setLastName)}
-                    className="font-montserrat text-[16px] sm:text-[22px] text-black not-italic font-normal leading-normal px-2 py-2 rounded-md border-none mt-2 w-[280px] sm:w-[440px]"
-                    name="lastName"
-                    value={lastName}
-                  />
-                  {errors.lastName && (
-                    <p className="text-red-500">{errors.lastName}</p>
-                  )}
-                </div>
+              <div className="py-4 w-full sm:ml-6">
+                <label htmlFor="lastName">Last Name*</label>
+                <br />
+                <input
+                  onChange={(e) => handleChange(e, setLastName)}
+                  className="text-gray-900 text-[16px] md:text-[22px] px-2 py-2 rounded-md border-none mt-2 w-full"
+                  name="lastName"
+                  value={lastName}
+                />
+                {errors.lastName && (
+                  <p className="text-red-500">{errors.lastName}</p>
+                )}
               </div>
             </div>
-            <div className="flex flex-col sm:flex-row justify-between sm:gap-[80px]">
-              <div className="w-full sm:w-1/2 sm:px-2">
-                <div className="py-4">
-                  <label htmlFor="mobile" className="font-montserrat text-[16px] sm:text-[22px] not-italic font-normal leading-normal">Mobile Number*</label>
-                  <br />
-                  <input
-                    onChange={(e) => handleChange(e, setMobile)}
-                    className="font-montserrat text-[16px] sm:text-[22px] text-black not-italic font-normal leading-normal px-2 py-2 rounded-md border-none mt-2 w-[280px] sm:w-[440px]"
-                    name="mobile"
-                    value={Mobile}
-                    type="tel"
-                  />
-                  {errors.mobile && (
-                    <p className="text-red-500">{errors.mobile}</p>
-                  )}
-                </div>
+            <div className="flex flex-col justify-center sm:flex-row sm:justify-evenly w-full lg:gap-20">
+              <div className="py-4 w-full">
+                <label htmlFor="mobile">Mobile Number*</label>
+                <br />
+                <input
+                  onChange={(e) => handleChange(e, setMobile)}
+                  className="text-gray-900 text-[16px] md:text-[22px] px-2 py-2 rounded-md border-none mt-2 w-full"
+                  name="mobile"
+                  value={Mobile}
+                  type="tel"
+                />
+                {errors.mobile && (
+                  <p className="text-red-500">{errors.mobile}</p>
+                )}
               </div>
-              <div className="w-full sm:w-1/2 sm:px-2">
-                <div className="py-4">
-                  <label htmlFor="city" className="font-montserrat text-[16px] sm:text-[22px] not-italic font-normal leading-normal">City*</label>
-                  <br />
-                  <input
-                    onChange={(e) => handleChange(e, setCity)}
-                    className="font-montserrat text-[16px] sm:text-[22px] text-black not-italic font-normal leading-normal px-2 py-2 rounded-md border-none mt-2 w-[280px] sm:w-[440px]"
-                    name="city"
-                    value={City}
-                  />
-                  {errors.city && <p className="text-red-500">{errors.city}</p>}
-                </div>
+              <div className="py-4 w-full sm:ml-6">
+                <label htmlFor="city">City*</label>
+                <br />
+                <input
+                  onChange={(e) => handleChange(e, setCity)}
+                  className="text-gray-900 text-[16px] md:text-[22px] px-2 py-2 rounded-md border-none mt-2 w-full"
+                  name="city"
+                  value={city}
+                />
+                {errors.city && <p className="text-red-500">{errors.city}</p>}
               </div>
             </div>
-            <div className="flex flex-col sm:flex-row justify-between sm:gap-[80px]">
-              <div className="w-full sm:w-1/2 sm:px-2">
-                <div className="py-4">
-                  <label htmlFor="company" className="font-montserrat text-[16px] sm:text-[22px] not-italic font-normal leading-normal">Company Name</label>
-                  <br />
-                  <input
-                    onChange={(e) => handleChange(e, setCompany)}
-                    className="font-montserrat text-[16px] sm:text-[22px] text-black not-italic font-normal leading-normal px-2 py-2 rounded-md border-none mt-2 w-[280px] sm:w-[440px]"
-                    name="company"
-                    value={Company}
-                  />
-                </div>
+            <div className="flex flex-col justify-center sm:flex-row sm:justify-evenly w-full lg:gap-20">
+              <div className="py-4 w-full">
+                <label htmlFor="companyName">Company Name</label>
+                <br />
+                <input
+                  onChange={(e) => handleChange(e, setCompanyName)}
+                  className="text-gray-900 text-[16px] md:text-[22px] px-2 py-2 rounded-md border-none mt-2 w-full"
+                  name="companyName"
+                  value={companyName}
+                  type="tel"
+                />
+                {errors.companyName && (
+                  <p className="text-red-500">{errors.companyName}</p>
+                )}
               </div>
-              <div className="w-full sm:w-1/2 sm:px-2">
-                <div className="py-4">
-                  <label htmlFor="business" className="font-montserrat text-[16px] sm:text-[22px] not-italic font-normal leading-normal">Type of business</label>
-                  <br />
-                  <input
-                    onChange={(e) => handleChange(e, setbusiness)}
-                    className="font-montserrat text-[16px] sm:text-[22px] text-black not-italic font-normal leading-normal px-2 py-2 rounded-md border-none mt-2 w-[280px] sm:w-[440px]"
-                    name="business"
-                    value={business}
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col sm:flex-row justify-between sm:gap-[80px]">
-              <div className="w-full sm:w-1/2 sm:px-2">
-                <div className="py-4">
-                  <label htmlFor="reason" className="font-montserrat text-[16px] sm:text-[22px] not-italic font-normal leading-normal">'What do you want to Advertise?'</label>
-                  <br />
-                  <input
-                    onChange={(e) => handleChange(e, setReason)}
-                    className="font-montserrat text-[16px] sm:text-[22px] text-black not-italic font-normal leading-normal px-2 py-2 rounded-md border-none mt-2 w-[280px] sm:w-[440px]"
-                    name="reason"
-                    value={reason}
-                  />
-                </div>
-              </div>
-              <div className="w-full sm:w-1/2 sm:px-2">
-                <div className="py-4">
-                  <label htmlFor="amount" className="font-montserrat text-[16px] sm:text-[22px] not-italic font-normal leading-normal">How many bottles?</label>
-                  <br />
-                  <input
-                    onChange={(e) => handleChange(e, setAmount)}
-                    className="font-montserrat text-[16px] sm:text-[22px] text-black not-italic font-normal leading-normal px-2 py-2 rounded-md border-none mt-2 w-[280px] sm:w-[440px]"
-                    name="amount"
-                    value={amount}
-                    type="number"
-                  />
-                </div>
+              <div className="py-4 w-full sm:ml-6">
+                <label htmlFor="typeOfBusiness">Type of Business</label>
+                <br />
+                <input
+                  onChange={(e) => handleChange(e, setTypeOfBusiness)}
+                  className="text-gray-900 text-[16px] md:text-[22px] px-2 py-2 rounded-md border-none mt-2 w-full"
+                  name="typeOfBusiness"
+                  value={typeOfBusiness}
+                />
+                {errors.typeOfBusiness && (
+                  <p className="text-red-500">{errors.typeOfBusiness}</p>
+                )}
               </div>
             </div>
-            <div className="flex flex-col sm:flex-row justify-between sm:gap-[80px]">
-              <div className="w-full sm:w-1/2 sm:px-2">
-                <div className="py-4">
-                  <label htmlFor="message" className="font-montserrat text-[16px] sm:text-[22px] not-italic font-normal leading-normal">Message</label>
-                    <br />
-                    <textarea
-                      onChange={(e) => handleChange(e, setMessage)}
-                      className="font-montserrat text-[16px] sm:text-[22px] h-[128px] text-black not-italic font-normal leading-normal px-2 py-2 rounded-md border-none mt-2 w-[280px] sm:w-[440px]"
-                      name="message"
-                      value={message}
-                      type="text"
-                    />
-                </div>
+            <div className="flex flex-col justify-center sm:flex-row sm:justify-evenly w-full lg:gap-20">
+              <div className="py-4 w-full">
+                <label htmlFor="whatDoYouWantToAdvertise">
+                  What do you want to advertise?
+                </label>
+                <br />
+                <input
+                  onChange={(e) => handleChange(e, setWhatDoYouWantToAdvertise)}
+                  className="text-gray-900 text-[16px] md:text-[22px] px-2 py-2 rounded-md border-none mt-2 w-full"
+                  name="whatDoYouWantToAdvertise"
+                  value={whatDoYouWantToAdvertise}
+                />
+                {errors.whatDoYouWantToAdvertise && (
+                  <p className="text-red-500">
+                    {errors.whatDoYouWantToAdvertise}
+                  </p>
+                )}
               </div>
-              <div className=" flex justify-center items-center">
-                <button
-                  type="submit"
-                  className="bg-[#FC581C] font-inter w-[280px] sm:w-[190px] h-[70px] px-[64px] py-[20px] text-[24px] text-[#FFF] rounded-[9px] hover:bg-orange-300 hover:cursor-pointer active:bg-white active:text-orange-500"
-                >
-                  {isSubmitting ? "Submitting..." : "Send"}
-                </button>
+              <div className=" py-4 w-full sm:ml-6">
+                <label htmlFor="howManyBottles">How many bottles?</label>
+                <br />
+                <input
+                  onChange={(e) => handleChange(e, setHowManyBottles)}
+                  className="text-gray-900 text-[16px] md:text-[22px] px-2 py-2 rounded-md border-none mt-2 w-full"
+                  name="howManyBottles"
+                  value={howManyBottles}
+                />
+                {errors.howManyBottles && (
+                  <p className="text-red-500">{errors.howManyBottles}</p>
+                )}
               </div>
+            </div>
+            <div className="flex flex-col justify-center sm:flex-row sm:justify-evenly w-full lg:gap-20">
+              <div className="py-4 w-full">
+                <ReCAPTCHA
+                  sitekey="6LdXEPopAAAAAJENfwXUQs9aUZ-6r7FIM3X6VLGZ"
+                  onChange={setCaptchaValue}
+                />
+                {errors.captcha && (
+                  <p className="text-red-500">{errors.captcha}</p>
+                )}
+              </div>
+              <button
+                type="submit"
+                className="bg-[#FC581C] px-6 py-2 text-[16px] md:text-[22px] text-white rounded-md hover:bg-orange-300 hover:cursor-pointer active:bg-white active:text-orange-500 mt-8 h-12 sm-w[50px]"
+              >
+                {isSubmitting ? "Submitting..." : "Send"}
+              </button>
             </div>
             {isSubmitted && (
               <div className="flex items-center mt-4 text-green-500 text-xl">
@@ -265,6 +265,7 @@ function Subscribe({ formRef }) {
           </div>
         </form>
       </div>
+    </div>
   );
 }
 

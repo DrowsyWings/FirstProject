@@ -10,7 +10,7 @@ function Container() {
       <Component1></Component1>
       <Component2></Component2>
       <Component3></Component3>
-      <div className='w-full flex items-center justify-center bg-gradient-to-r from-blue-50 via-blue-100 to-sky-200'>
+      <div className='w-full flex items-center justify-center bg-gradient-to-r from-blue-50 via-blue-100 to-sky-200 px-6 py-16 lg:py-24'>
         <SubscribeForm></SubscribeForm>
       </div>
     </div>

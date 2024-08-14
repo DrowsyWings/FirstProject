@@ -1,223 +1,59 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const {
-  LandingPageForm,
-  DistributeForm,
-  ContactUsForm,
-  AdvertisementForm,
-} = require("./db");
-const zod = require("zod");
+const { Form } = require("./db/index");
+const { z } = require("zod");
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-//*Home Route
-// LandingForm Validation
-const formSchema = zod.object({
-  FirstName: zod.string(),
-  LastName: zod.string(),
-  MobileNumber: zod.string().min(10),
-  City: zod.string(),
+// Form Validation Schema
+const formSchema = z.object({
+  FirstName: z.string().min(1, "First Name is required"),
+  LastName: z.string().min(1, "Last Name is required"),
+  MobileNumber: z
+    .string()
+    .min(10, "Mobile Number must be at least 10 characters"),
+  City: z.string().min(1, "City is required"),
+  CompanyName: z.string().optional(),
+  TypeOfBusiness: z.string().optional(),
+  WhatDoYouWantAdvertise: z.string().optional(),
+  NoOfBottles: z.number().optional(),
 });
 
-app.post("/", async (req, res) => {
-  const { FirstName, LastName, MobileNumber, City } = req.body;
-  // console.log(FirstName, LastName, MobileNumber, City);
+//Form Submission Handler
+const handleFormSubmission = async (req, res) => {
   try {
-    if (!formSchema.safeParse(req.body).success) {
-      res.status(400).json({ message: "Invalid Form Data" });
-    }
-
-    if (!FirstName || !LastName || !MobileNumber || !City) {
-      res.status(400).json({ message: "Please Fill All Fields" });
-    }
-
-    const form = new LandingPageForm({
-      FirstName,
-      LastName,
-      MobileNumber,
-      City,
-    });
+    const validatedData = formSchema.parse(req.body);
+    const form = new Form(validatedData);
     await form.save();
     res.status(200).json({ message: "Form Submitted Successfully" });
   } catch (error) {
-    console.log("Error", error);
-    // res.status(400).json({ message: error.message });
+    if (error instanceof z.ZodError) {
+      res
+        .status(400)
+        .json({ message: "Invalid Form Data", errors: error.errors });
+    } else {
+      console.error("Error:", error);
+      res
+        .status(500)
+        .json({ message: "An error occurred while processing your request" });
+    }
   }
-});
+};
 
-//* Distribute Route
-// DistributeForm Validation
-const distributeFormSchema = zod.object({
-  FirstName: zod.string(),
-  LastName: zod.string(),
-  MobileNumber: zod.string().min(10),
-  City: zod.string(),
-  CompanyName: zod.string(),
-  TypeOfBusiness: zod.string().optional(),
-  ShippingAddress: zod.string(),
-  Amount: zod.number(),
-});
+// Routes
+app.post("/", handleFormSubmission);
+app.post("/distribute", handleFormSubmission);
+app.post("/advertise", handleFormSubmission);
+app.post("/contact", handleFormSubmission);
 
-app.post("/distribute", async (req, res) => {
-  const {
-    FirstName,
-    LastName,
-    MobileNumber,
-    City,
-    CompanyName,
-    TypeOfBusiness,
-    ShippingAddress,
-    Amount,
-  } = req.body;
-
-  try {
-    if (!distributeFormSchema.safeParse(req.body).success) {
-      res.status(400).json({ message: "Invalid Form Data" });
-    }
-
-    if (
-      !FirstName ||
-      !LastName ||
-      !City ||
-      !MobileNumber ||
-      !ShippingAddress ||
-      !Amount
-    ) {
-      res.status(400).json({ message: "Please Fill All Fields" });
-    }
-
-    const form = new DistributeForm({
-      FirstName,
-      LastName,
-      MobileNumber,
-      City,
-      CompanyName,
-      TypeOfBusiness,
-      ShippingAddress,
-      Amount,
-    });
-    await form.save();
-    res.status(200).json({ message: "Form Submitted Successfully" });
-  } catch (error) {
-    console.log("Error", error);
-  }
-});
-
-//* Advertisement Route
-// AdvertisementForm Validation
-const advertisementFormSchema = zod.object({
-  FirstName: zod.string(),
-  LastName: zod.string(),
-  MobileNumber: zod.string().min(10),
-  City: zod.string(),
-  CompanyName: zod.string(),
-  TypeOfBusiness: zod.string().optional(),
-  WhatDoYouWantAdvertise: zod.string(),
-  Budget: zod.number(),
-  Message: zod.string().optional(),
-});
-
-app.post("/advertise", async (req, res) => {
-  const {
-    FirstName,
-    LastName,
-    MobileNumber,
-    City,
-    CompanyName,
-    TypeOfBusiness,
-    WhatDoYouWantAdvertise,
-    Budget,
-    Message,
-  } = req.body;
-  try {
-    if (!advertisementFormSchema.safeParse(req.body).success) {
-      res.status(400).json({ message: "Invalid Form Data" });
-    }
-
-    if (
-      !FirstName ||
-      !LastName ||
-      !City ||
-      !MobileNumber ||
-      !WhatDoYouWantAdvertise ||
-      !Budget
-    ) {
-      res.status(400).json({ message: "Please Fill All Fields" });
-    }
-
-    const form = new AdvertisementForm({
-      FirstName,
-      LastName,
-      MobileNumber,
-      City,
-      CompanyName,
-      TypeOfBusiness,
-      WhatDoYouWantAdvertise,
-      Budget,
-      Message,
-    });
-    await form.save();
-    res.status(200).json({ message: "Form Submitted Successfully" });
-  } catch (error) {
-    console.log("Error", error);
-  }
-});
-
-//* Contact Route
-// ContactUsForm Validation
-const contactFormSchema = zod.object({
-  FirstName: zod.string(),
-  LastName: zod.string(),
-  MobileNumber: zod.string().min(10),
-  City: zod.string(),
-  CompanyName: zod.string().optional(),
-  TypeOfBusiness: zod.string().optional(),
-  AdvertiseContent: zod.string().optional(),
-  NoOfBottles: zod.number(),
-});
-
-app.post("/contact", async (req, res) => {
-  const {
-    FirstName,
-    LastName,
-    MobileNumber,
-    City,
-    CompanyName,
-    TypeOfBusiness,
-    AdvertiseContent,
-    NoOfBottles,
-  } = req.body;
-  try {
-    if (!contactFormSchema.safeParse(req.body).success) {
-      res.status(400).json({ message: "Invalid Form Data" });
-    }
-
-    if (!FirstName || !LastName || !MobileNumber || !City || !NoOfBottles) {
-      res.status(400).json({ message: "Please Fill All Fields" });
-    }
-
-    const form = new ContactUsForm({
-      FirstName,
-      LastName,
-      MobileNumber,
-      City,
-      CompanyName,
-      TypeOfBusiness,
-      AdvertiseContent,
-      NoOfBottles,
-    });
-    await form.save();
-    res.status(200).json({ message: "Form Submitted Successfully" });
-  } catch (error) {
-    console.log("Error", error);
-  }
-});
-
+// Global error handler
 app.use((err, req, res, next) => {
+  console.error(err.stack);
   res.status(500).send({ message: "An unexpected error occurred" });
 });
 
-app.listen(3000);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

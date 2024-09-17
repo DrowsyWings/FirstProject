@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import logoIcon from '../../assets/CompanyLogo.svg'
+import logoIcon2 from '../../assets/Logo2.svg'
 
 function HeaderNav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,6 +14,8 @@ function HeaderNav() {
   // Determine if the current route is "/home" or "/advertise"
   const isWhiteText = location.pathname === '/' || location.pathname === '/advertise';
 
+  const isLogo = location.pathname === '/distribute' || location.pathname === '/faq' || location.pathname==='/contactus';
+
   return (
     <div className='absolute top-0 left-0 w-full z-20'>
       <nav className=" w-full py-3 bg-transparent">
@@ -21,7 +24,7 @@ function HeaderNav() {
             <div className="flex items-center">
               <Link to="/">
                 <div className='flex items-center'>
-                  <img src={logoIcon} alt="Free Water Icon" />
+                  <img src={isLogo? logoIcon2 :logoIcon} alt="Free Water Icon" />
                 </div>
               </Link>
             </div>
@@ -32,7 +35,7 @@ function HeaderNav() {
             </div>
             <div className="hidden lg:flex items-center">
               <Link to="/contactus">
-                <button className={`${isWhiteText ? 'text-white' : 'text-black'} inline-flex items-center bg-transparent border-2 border-current py-2 px-5 focus:outline-none hover:bg-gray-700 rounded-full text-base mt-4 md:mt-0`}>
+                <button className={`${isWhiteText ? 'text-white' : 'text-black'} inline-flex items-center bg-transparent border-2 border-current py-2 px-5 focus:outline-none hover:bg-[#FD763A] rounded-full text-base mt-4 md:mt-0`}>
                   Contact Us
                   <svg
                     fill="none"

@@ -10,7 +10,7 @@ function ComponentD1({ handleScrollToForm }) {
   return (
     <div className="w-full flex flex-col-reverse text-zinc-950 p-4 sm:p-16 md:flex-row md:justify-between relative">
       <div className="flex flex-col justify-start  w-full md:px-10">
-        <h1 className="w-full text-[40px] sm:text-6xl md:text-6xl  xl:text-8xl font-extrabold text-zinc-950 mt-10 lg:text-start text-center" >
+        <h1 className="w-full text-[40px] sm:text-6xl md:text-6xl  xl:text-8xl font-extrabold text-zinc-950 mt-16 sm:mt-10 lg:text-start text-center" >
           Distribute
           <br/>
           FreeWater
@@ -42,7 +42,7 @@ function ComponentD1({ handleScrollToForm }) {
             </li>
           </ul>
           <Link to="/contactus">
-              <button className="bg-transparent hover:bg-gray-700 rounded-full w-[85.3px] sm:w-auto mt-[16px] hidden lg:block cursor-pointer z-20">
+              <button className="bg-transparent hover:bg-[#fc581c] rounded-full w-[85.3px] sm:w-auto mt-[16px] hidden lg:block cursor-pointer z-20">
                 <img src={callIcon} className="w-[120px] lg:w-[140px] xl:w-auto"></img>
               </button>
           </Link>

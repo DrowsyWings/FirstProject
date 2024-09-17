@@ -221,19 +221,10 @@ function Subscribe({ formRef }) {
                 )}
               </div>
             </div>
-            <div className="flex flex-col justify-center sm:flex-row sm:justify-evenly w-full lg:gap-20">
-              <div className="py-4 w-full">
-                <ReCAPTCHA
-                  sitekey="6LdXEPopAAAAAJENfwXUQs9aUZ-6r7FIM3X6VLGZ"
-                  onChange={setCaptchaValue}
-                />
-                {errors.captcha && (
-                  <p className="text-red-500">{errors.captcha}</p>
-                )}
-              </div>
+            <div className="flex flex-col justify-center sm:flex-row sm:justify-end w-full lg:gap-20">
               <button
                 type="submit"
-                className="bg-[#FC581C] px-6 py-2 text-[16px] md:text-[22px] text-white rounded-md hover:bg-orange-300 hover:cursor-pointer active:bg-white active:text-orange-500 mt-8 h-12 sm-w[50px]"
+                className="bg-[#FC581C] px-6 py-2 text-[16px] md:text-[22px] text-white rounded-md hover:bg-orange-300 hover:cursor-pointer active:bg-white active:text-orange-500 mt-8 h-12 sm:w-[18 0px]"
               >
                 {isSubmitting ? "Submitting..." : "Send"}
               </button>

@@ -1,30 +1,14 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import logo from '../../assets/CompanyLogo.svg'
 
 function Footer() {
   return (
     <footer className="bg-[#0F40A8] text-white text-center py-8">
-      {/* Top white line in the center */}
-      <div className="w-[1312px] mx-auto border-t border-white mb-8"></div>
-
-      {/* Company Logo and Name */}
       <div className="mb-4 flex justify-center space-x-4">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          stroke="currentColor"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          className="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
-          viewBox="0 0 24 24"
-        >
-          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-        </svg>
-        <h1 className="text-2xl font-bold">Adura</h1>
+        <img src={logo}></img>
       </div>
 
-      {/* Links */}
       <div className="mb-4 flex justify-center space-x-4 py-4">
         <ul className="flex justify-evenly w-[620px]">
           <li>
@@ -55,7 +39,6 @@ function Footer() {
         </ul>
       </div>
 
-      {/* Social Media Icons */}
       <div className="mb-4 flex justify-center space-x-4 py-6">
         <ul className="flex justify-evenly w-[468px]">
           <li>
@@ -194,8 +177,6 @@ function Footer() {
           </li>
         </ul>
       </div>
-
-      {/* Copyright */}
       <div className="border-t border-white pt-4">
         <p className="text-sm">&copy; Adura 2023-2024. All rights reserved.</p>
       </div>

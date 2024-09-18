@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import axios from "axios";
 
-function Subscribe({ formRef }) {
+function Subscribe(_,formRef) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [Mobile, setMobile] = useState("");
@@ -260,4 +260,4 @@ function Subscribe({ formRef }) {
   );
 }
 
-export default Subscribe;
+export default React.forwardRef(Subscribe);

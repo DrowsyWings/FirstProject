@@ -4,9 +4,8 @@ import callIcon from '../../assets/callIcon2.svg'
 import dots from '../../assets/dot.svg'
 import distbottle from '../../assets/Distriburtbottle.svg'
 import bottle from '../../assets/distBottles.svg'
-// import { banner } from "../../assets/banner.png";
 
-function ComponentD1({ handleScrollToForm }) {
+function ComponentD1() {
   return (
     <div className="w-full flex flex-col-reverse text-zinc-950 p-4 sm:p-16 md:flex-row md:justify-between relative">
       <div className="flex flex-col justify-start  w-full md:px-10">

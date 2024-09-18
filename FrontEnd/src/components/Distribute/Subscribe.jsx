@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import axios from "axios";
 
-function Subscribe({ formRef }) {
+function Subscribe() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [Mobile, setMobile] = useState("");
@@ -96,7 +96,7 @@ function Subscribe({ formRef }) {
   return (
     <div className="bg-blue-800 text-white  rounded-[26px] justify-center inline-bl sm:px-8 md:w-[75%]">
       <div className=" flex justify-center rounded-3xl px-4 py-6 md:py-10 w-full">
-        <form ref={formRef} onSubmit={handleSubmit} className="w-full">
+        <form onSubmit={handleSubmit} className="w-full">
           <div className="flex flex-col">
             <div className="text-[24px] sm:text-[32px] text-neutral-100 md:text-[45px] font-bold font-['Inter'] text-center">
               Subscribe Today

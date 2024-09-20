@@ -40,7 +40,7 @@ function Subscribe() {
       console.log("Form submitted successfully:", { firstName });
       setIsSubmitting(true);
       setIsSubmitted(false);
-      
+
       const formData = {
         firstName,
         lastName,
@@ -53,7 +53,7 @@ function Subscribe() {
       };
 
       try {
-        const response = await axios.post("http://localhost:3000/distribute", {
+        const response = await axios.post("http://localhost:3000/", {
           FirstName: firstName,
           LastName: lastName,
           MobileNumber: Mobile,

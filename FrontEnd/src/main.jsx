@@ -11,7 +11,7 @@ import Layout from "./Layout";
 import Home from "./components/Home/Home";
 import Advertise from "./components/Advertise/Advertise";
 import Distribute from "./components/Distribute/Distribute";
-import HallOfFame from "./components/HallOfFame/HallOfFame";
+// import HallOfFame from "./components/HallOfFame/HallOfFame";
 import Faq from "./components/Faq/Faq";
 import ContactUs from "./components/ContactUs/ContactUs";
 
@@ -21,7 +21,7 @@ const router = createBrowserRouter(
       <Route path="" element={<Home />}></Route>
       <Route path="advertise" element={<Advertise />}></Route>
       <Route path="distribute" element={<Distribute />}></Route>
-      <Route path="hall-of-fame" element={<HallOfFame />}></Route>
+      {/* <Route path="hall-of-fame" element={<HallOfFame />}></Route> */}
       <Route path="faq" element={<Faq />}></Route>
       <Route path="contactus" element={<ContactUs />}></Route>
     </Route>

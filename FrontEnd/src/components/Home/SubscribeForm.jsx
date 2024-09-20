@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import ReCAPTCHA from "react-google-recaptcha";
 import axios from "axios";
 
-function Subscribe(_,formRef) {
+function Subscribe(_, formRef) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [Mobile, setMobile] = useState("");
@@ -40,20 +39,20 @@ function Subscribe(_,formRef) {
       console.log("Form submitted successfully:", { firstName });
       setIsSubmitting(true);
       setIsSubmitted(false);
-      
-      const formData = {
-        firstName,
-        lastName,
-        Mobile,
-        city,
-        companyName,
-        typeOfBusiness,
-        whatDoYouWantToAdvertise,
-        howManyBottles,
-      };
+
+      // const formData = {
+      //   firstName,
+      //   lastName,
+      //   Mobile,
+      //   city,
+      //   companyName,
+      //   typeOfBusiness,
+      //   whatDoYouWantToAdvertise,
+      //   howManyBottles,
+      // };
 
       try {
-        const response = await axios.post("http://localhost:3000/distribute", {
+        const response = await axios.post("http://localhost:3000/", {
           FirstName: firstName,
           LastName: lastName,
           MobileNumber: Mobile,
@@ -102,7 +101,7 @@ function Subscribe(_,formRef) {
               Get a Quote
             </div>
             <div className="text-neutral-300 text-[16px] md:text-[24px] font-medium font-['Inter'] text-center mt-4 md:mt-8">
-              Please fill out the quick form and we'll be in touch with
+              Please fill out the quick form and we&apos;ll be in touch with
               lightning speed
             </div>
             <div className="flex flex-col justify-center sm:flex-row sm:justify-evenly w-full lg:gap-20">

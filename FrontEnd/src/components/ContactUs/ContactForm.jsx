@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import ReCAPTCHA from "react-google-recaptcha";
+import { useState } from "react";
 import axios from "axios";
 
 function Subscribe({ formRef }) {
@@ -40,20 +39,9 @@ function Subscribe({ formRef }) {
       console.log("Form submitted successfully:", { firstName });
       setIsSubmitting(true);
       setIsSubmitted(false);
-      
-      const formData = {
-        firstName,
-        lastName,
-        Mobile,
-        city,
-        companyName,
-        typeOfBusiness,
-        whatDoYouWantToAdvertise,
-        howManyBottles,
-      };
 
       try {
-        const response = await axios.post("http://localhost:3000/distribute", {
+        const response = await axios.post("http://localhost:3000/", {
           FirstName: firstName,
           LastName: lastName,
           MobileNumber: Mobile,

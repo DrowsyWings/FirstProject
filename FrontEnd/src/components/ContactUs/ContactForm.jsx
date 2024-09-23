@@ -10,7 +10,6 @@ function Subscribe({ formRef }) {
   const [typeOfBusiness, setTypeOfBusiness] = useState("");
   const [whatDoYouWantToAdvertise, setWhatDoYouWantToAdvertise] = useState("");
   const [howManyBottles, setHowManyBottles] = useState("");
-  const [captchaValue, setCaptchaValue] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -31,7 +30,6 @@ function Subscribe({ formRef }) {
     if (!city) newErrors.city = "City is required.";
     if (!howManyBottles)
       newErrors.howManyBottles = "No. of bottles is required.";
-    if (!captchaValue) newErrors.captcha = "Please verify the reCAPTCHA.";
 
     setErrors(newErrors);
 
@@ -64,7 +62,6 @@ function Subscribe({ formRef }) {
           setTypeOfBusiness("");
           setWhatDoYouWantToAdvertise("");
           setHowManyBottles("");
-          setCaptchaValue(null);
         } else {
           setErrors({
             form: "An error occurred while submitting the form. Please try again.",

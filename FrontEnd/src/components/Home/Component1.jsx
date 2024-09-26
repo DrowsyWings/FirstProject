@@ -1,12 +1,36 @@
-import React from 'react'
+import React, { useState } from 'react'
 import bottleImage from '../../assets/bottle.svg'
 import commaIcon from '../../assets/comma.svg'
 import vectorImage from '../../assets/vector.svg'
 import callIcon from '../../assets/callIcon.svg'
+import callIcon2 from '../../assets/call2.svg'
 import '../../index.css'
 import { Link } from 'react-router-dom'
 
 function Component1() {
+
+  const [source,setSource] = useState(callIcon);
+  const [isSet,setIsSet] = useState(true);
+
+  const handleCl=()=>{
+    if(isSet){
+      setSource(callIcon2);
+      setIsSet(false);
+    }
+    else{
+      setSource(callIcon)
+      setIsSet(true)
+    }
+  }
+
+  const handleHover=()=>{
+    setSource(callIcon2)
+  }
+
+  const antiHover=()=>{
+    setSource(callIcon)
+  }
+
   return (
     <div className='flex relative  justify-center items-center'>
       <div className='w-[78.5%] sm:w-1/2 h-[548px] sm:h-[1024px] sm:bg-[#436CB4] bg-[#0F40A8] flex-shrink-0 flex justify-center items-center pt-10 pb-5 relative'>
@@ -22,11 +46,12 @@ function Component1() {
             <p className='font-montserrat text-[#F7F7F7] text-[12px] sm:text-[20px] font-normal not-italic leading-1'>We provide sustainable advertising medium that imprints your brand in everyone’s mind at dirt cheap cost.</p>
           </div>
           <div className='mt-[33px] sm:mt-[76px]'>
-            <Link to="/contactus">
-              <button className="bg-transparent hover:bg-[#FD763A] rounded-full w-[85.3px] sm:w-auto">
-                <img src={callIcon}></img>
+              <button onMouseEnter={handleHover} onMouseLeave={antiHover} className="bg-transparent rounded-full w-[85.3px] sm:w-auto relative hidden md:display-block">
+                <img src={source}></img>
               </button>
-            </Link>
+              <button onClick={handleCl} className="bg-transparent rounded-full w-[85.3px] sm:w-auto relative md:hidden">
+                <img src={source}></img>
+              </button>
           </div>
         </div>
         <div className='absolute left-2  sm:hidden'>

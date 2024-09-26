@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import bottle from '../../assets/bottle.gif.gif'
 import line1 from '../../assets/S1 Line.svg'
@@ -10,12 +10,35 @@ import n2 from '../../assets/N2 number.svg'
 import n3 from '../../assets/N3 number.svg'
 import n4 from '../../assets/N4 number.svg'
 import callIcon from '../../assets/callIcon.svg'
+import callIcon2 from '../../assets/call2.svg'
 
 function Component2() {
+
+  const [source,setSource] = useState(callIcon);
+  const [isSet,setIsSet] = useState(true);
+
+  const handleCl=()=>{
+    if(isSet){
+      setSource(callIcon2);
+      setIsSet(false);
+    }
+    else{
+      setSource(callIcon)
+      setIsSet(true)
+    }
+  }
+
+  const handleHover=()=>{
+    setSource(callIcon2)
+  }
+
+  const antiHover=()=>{
+    setSource(callIcon)
+  }
   return (
     <div className='flex flex-col justify-center items-center relative px-[130px] sm:px-[360px]'>
         <div className='flex justify-center relatives'>
-            <img src={bottle} className='w-[101px] h-[200px] sm:w-auto sm:h-auto'></img>
+            <img src={bottle} className='w-[101px] h-[200px] sm:w-auto sm:h-auto z-10'></img>
             <img src={line1} className='absolute left-[24%] top-[10%] w-[54px] sm:w-auto'></img>
             <img src={line2} className='absolute right-[24%] top-[70px] sm:top-[400px] w-[46px] sm:w-auto'></img>
             <img src={line3} className='absolute left-[24%] top-[130px] sm:top-[600px] w-[44px] sm:w-auto'></img>
@@ -40,12 +63,13 @@ function Component2() {
         <div className="text-stone-300 text-[8px] sm:text-2xl font-normal font-['Inter'] mt-4 sm:mt-10">Alumi-Tec Bottle</div>
         <div className="text-stone-300 text-[4px] sm:text-xs font-normal font-['Inter']">16 fl oz / 500 ml</div>
         <div className='mt-[7px] sm:mt-[36px] mb-[20px] sm:mb-[74px]'>
-            <Link to="/contactus">
-              <button className="bg-transparent hover:bg-[#FD763A] rounded-full">
-                <img src={callIcon} className='w-[43px] h-[10px] sm:w-auto sm:h-auto'></img>
-              </button>
-            </Link>
-          </div>
+        <button onMouseEnter={handleHover} onMouseLeave={antiHover} className="bg-transparent rounded-full w-[85.3px] sm:w-auto relative hidden md:display-block">
+          <img src={source}></img>
+        </button>
+        <button onClick={handleCl} className="bg-transparent rounded-full w-[85.3px] sm:w-auto relative md:hidden">
+            <img src={source}></img>
+        </button>
+        </div>
     </div>
   )
 }

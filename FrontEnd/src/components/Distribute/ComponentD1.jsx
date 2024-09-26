@@ -52,7 +52,7 @@ function ComponentD1() {
               </div>
             </li>
           </ul>
-          <button onMouseEnter={handleHover} onMouseLeave={antiHover} className="bg-transparent rounded-full w-[85.3px] sm:w-auto relative hidden md:display-block">
+          <button onMouseEnter={handleHover} onMouseLeave={antiHover} className="bg-transparent rounded-full w-[85.3px] sm:w-auto relative hidden md:block">
             <img src={source}></img>
           </button>
           <div className="lg:hidden">

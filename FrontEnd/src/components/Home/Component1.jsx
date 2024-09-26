@@ -5,7 +5,6 @@ import vectorImage from '../../assets/vector.svg'
 import callIcon from '../../assets/callIcon.svg'
 import callIcon2 from '../../assets/call2.svg'
 import '../../index.css'
-import { Link } from 'react-router-dom'
 
 function Component1() {
 
@@ -46,7 +45,7 @@ function Component1() {
             <p className='font-montserrat text-[#F7F7F7] text-[12px] sm:text-[20px] font-normal not-italic leading-1'>We provide sustainable advertising medium that imprints your brand in everyone’s mind at dirt cheap cost.</p>
           </div>
           <div className='mt-[33px] sm:mt-[76px]'>
-              <button onMouseEnter={handleHover} onMouseLeave={antiHover} className="bg-transparent rounded-full w-[85.3px] sm:w-auto relative hidden md:display-block">
+              <button onMouseEnter={handleHover} onMouseLeave={antiHover} className="bg-transparent rounded-full w-[85.3px] sm:w-auto relative hidden lg:block">
                 <img src={source}></img>
               </button>
               <button onClick={handleCl} className="bg-transparent rounded-full w-[85.3px] sm:w-auto relative md:hidden">

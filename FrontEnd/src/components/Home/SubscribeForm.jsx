@@ -50,7 +50,7 @@ function Subscribe(_, formRef) {
       };
 
       try {
-        const response = await axios.post("http://localhost:3000/", {
+        const response = await axios.post("/api/", {
           FirstName: firstName,
           LastName: lastName,
           MobileNumber: Mobile,

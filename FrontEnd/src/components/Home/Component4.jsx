@@ -6,7 +6,7 @@ import image03 from '../../assets/rect03.svg'
 
 function Component4() {
   return (
-    <div className='lg:w-[950px] xl:w-[1077px] w-[254px] flex justify-between sm:flex-row flex-col-reverse mt-[60px] sm:mt-[102px] gap-[35px]'>
+    <div className='lg:w-[950px] sm:w-[800px] xl:w-[1077px] w-[254px] flex justify-between sm:flex-row flex-col-reverse mt-[60px] sm:mt-[102px] gap-[35px] sm:px-6 lg:px-0'>
         <div className='flex sm:w-[481px] w-[228px] pl-[1.63px] justify-between sm:items-start items-center flex-col'>
             <div className='flex justify-center sm:justify-start gap-[24px] font-nunito font-normal w-full'>
                 <div className='flex px-[4.388px] sm:px-[12px] justify-center items-center gap-[3.656px] sm:gap-[10px] rounded-[28px] bg-[#989898]'>

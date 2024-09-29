@@ -1,10 +1,11 @@
 import React, { useState,useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../../assets/CompanyLogo.svg'
 import logo2 from '../../assets/Logo2.svg'
-import call from '../../assets/couponCall.svg'
+import call from '../../assets/Call.svg'
 import call2 from '../../assets/couponCall2.svg'
-import msg from '../../assets/couponMessage.svg'
-import location from '../../assets/couponLocation.svg'
+import msg from '../../assets/message.svg'
+import location from '../../assets/location.svg'
 import distbottle from '../../assets/couponBottle.svg'
 import voucher from '../../assets/couponVoucher.svg'
 import { useParams } from 'react-router-dom';
@@ -43,7 +44,7 @@ function Coupon() {
       <div onClick={blur ? handlereverse : null}  className={`${blur ? "blur-3xl" : "blur-0"}`}>
           <div className={`lg:flex gap-[100px] bg-[#0f40a8;] px-[100px] py-[24px] justify-center items-center hidden`}>
           <div>
-            <img src={logo}></img>
+            <Link to="/"><img src={logo}></img></Link>
           </div>
           <div className='gap-[80px] flex justify-center items-center text-[#ffffff] text-xl font-normal'>
             <div className='flex justify-center items-center gap-[24px]'>

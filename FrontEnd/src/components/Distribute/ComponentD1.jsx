@@ -5,8 +5,22 @@ import callIcon2 from '../../assets/call2.svg'
 import dots from '../../assets/dot.svg'
 import distbottle from '../../assets/Distriburtbottle.svg'
 import bottle from '../../assets/distBottles.svg'
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 function ComponentD1() {
+
+  const textToCopy = "9799995778";
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(textToCopy)
+      .then(() => {
+        toast.success("Text copied to clipboard!");
+      })
+      .catch(err => {
+        toast.error("Failed to copy text!");
+      });
+  };
 
   const [source,setSource] = useState(callIcon);
 
@@ -52,7 +66,7 @@ function ComponentD1() {
               </div>
             </li>
           </ul>
-          <button onMouseEnter={handleHover} onMouseLeave={antiHover} className="bg-transparent rounded-full w-[85.3px] sm:w-auto relative hidden md:block">
+          <button onMouseEnter={handleHover} onMouseLeave={antiHover} onClick={handleCopy} className="bg-transparent rounded-full w-[85.3px] sm:w-auto relative hidden lg:block">
             <img src={source}></img>
           </button>
           <div className="lg:hidden">
@@ -63,6 +77,7 @@ function ComponentD1() {
           <img src={distbottle} className="w-[62%]"></img>
         </div>
       </div>
+      <ToastContainer position="bottom-right" autoClose={3000} hideProgressBar />
     </div>
   );
 }

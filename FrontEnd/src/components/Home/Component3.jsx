@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function Component3() {
   return (
-    <div className='bg-transparent flex justify-between items-center sm:flex-row flex-col w-[325px] lg:w-[950px] xl:w-[1077px] gap-20  z-10 mt-[30px] sm:mt-[190px]'>
+    <div className='bg-transparent sm:w-[800px] flex justify-between items-center sm:flex-row flex-col w-[325px] lg:w-[950px] xl:w-[1077px] gap-2 lg:gap-20  z-10 mt-[30px] sm:mt-[190px] sm:px-6 lg:px-0'>
         <div className='flex items-center py-10'>
             <img src={image1} alt=""  className='rounded-[26px] sm:rounded-[50px] sm:w-[500px] w-[250px] sm:h-[326px] h-[160px]'/>
         </div>

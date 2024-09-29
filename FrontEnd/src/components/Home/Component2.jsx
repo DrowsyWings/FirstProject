@@ -7,7 +7,7 @@ import icon from '../../assets/icon.svg'
 
 function Component2() {
   return (
-        <div className='flex w-[328px] lg:w-[950px] xl:w-[1077px] flex-col-reverse sm:flex-row justify-between z-10 mt-[77px] h-[425px]'>
+        <div className='flex w-[328px] sm:w-[800px] lg:w-[950px] xl:w-[1077px] flex-col-reverse sm:flex-row justify-between z-10 mt-[77px] h-[425px] sm:px-6 lg:px-0'>
             <div className='flex sm:w-[461px] w-[326px] sm:items-start items-center flex-col justify-between'>
                 <div className='flex justify-center sm:justify-start gap-[24px] font-nunito font-normal w-full'>
                     <div className='flex px-[4.388px] sm:px-[12px] justify-center items-center gap-[3.656px] sm:gap-[10px] rounded-[28px] bg-[#989898]'>

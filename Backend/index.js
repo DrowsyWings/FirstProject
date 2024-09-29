@@ -5,8 +5,19 @@ const { Form } = require("./db/index");
 const { z } = require("zod");
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: "https://aquafree.co.in",
+  methods: "GET,POST,PUT,DELETE",
+  credential: true
+}));
+
+
+
 app.use(bodyParser.json());
+
+app.use('/api',(req,res,next)=>{
+  next();
+})
 
 // Form Validation Schema
 const formSchema = z.object({

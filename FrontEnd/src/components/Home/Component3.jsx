@@ -22,7 +22,7 @@ function Component3() {
                     We support Paani Foundation to build Water Wells
                 </p>
                 <p className='sm:w-full text-[#3D3D3D] font-montserrat w-[208px] text-[10px] sm:text-[20px] not-italic font-medium leading-normal text-center sm:text-start'>   
-                    1Rs per bottle consumed is donated by BlueWave to Paani Foundation for building sustainable water channels across the country preventing droughts and saving lives
+                    1Rs per bottle consumed is donated by Aquafree to Paani Foundation for building sustainable water channels across the country preventing droughts and saving lives
                 </p>
             </div>
             <Link>

@@ -67,9 +67,9 @@ function Component1() {
               </button>
           </div>
         </div>
-        <div className='absolute left-2  sm:hidden'>
+        <div className='absolute left-2 sm:hidden'>
           <h1 className="font-montserrat font-semibold sm:font-bold text-[#4971B6] text-[150px] sm:text-[300px] leading-none transform -rotate-90 m-0 p-0">
-            bottle
+            AQUA
           </h1>
         </div>
       </div>
@@ -79,12 +79,12 @@ function Component1() {
       <div className='w-[21.5%] sm:w-1/2 h-[548px] sm:h-[1024px] sm:bg-[#0F40A8] bg-[#436CB4] flex-shrink-0 relative flex justify-start items-center pt-10 pb-5'>
         <div className='w-[313px] h-[930px] absolute -left-12 hidden sm:inline-block z-0'>
           <h1 className="font-montserrat font-bold text-[#4971B6] text-[300px] leading-none transform rotate-90 m-0 p-0">
-            bottle
+            AQUA
           </h1>
         </div>
         <div className='w-[286px] absolute right-[100px] top-[255px] font-montserrat hidden lg:block'>
           <img src={commaIcon}></img>
-          <p className='font-normal text-[#F7F7F7] text-[20px] leading-[25px]'>We had an amazing experience with BlueWave. Their elite market targetting and QR codes conversation strategy won us more clients than any other medium evercould</p>
+          <p className='font-normal text-[#F7F7F7] text-[20px] leading-[25px]'>We had an amazing experience with Aquafree. Their elite market targeting and QR codes conversation strategy won us more clients than any other medium ever could</p>
           <h2 className='font-normal w-[125px] text-[#83CCFF] text-[20px] h-[24px]'>-Brent Foley</h2>
         </div>
         <div className='absolute -right-[112.44px] top-[526px] hidden lg:block'>

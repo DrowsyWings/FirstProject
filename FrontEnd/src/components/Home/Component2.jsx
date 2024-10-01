@@ -22,7 +22,7 @@ function Component2() {
                         Pure Water with food grade packaging
                     </p>
                     <p className='sm:w-full text-[#3D3D3D] font-montserrat w-[208px] text-[10px] sm:text-[20px] not-italic font-medium leading-normal text-center sm:text-start'>   
-                        Bluewave sources pure drinking water with reverse osmosis technology and provides it in durable sustainable packaging promoting recycling, moving away from single-useplastic bottles.
+                        Aquafree sources premium alkaline water with reverse osmosis technology and provides it in durable sustainable packaging promoting recycling, moving away from single-use plastic bottles.
                     </p>
                 </div>
                 <Link>

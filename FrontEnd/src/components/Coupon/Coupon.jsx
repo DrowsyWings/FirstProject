@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import logo from '../../assets/CompanyLogo.svg'
 import logo2 from '../../assets/Logo2.svg'
 import call from '../../assets/Call.svg'
-import call2 from '../../assets/couponCall2.svg'
+import call2 from '../../assets/Call.svg'
 import msg from '../../assets/message.svg'
 import location from '../../assets/location.svg'
-import distbottle from '../../assets/couponBottle.svg'
-import voucher from '../../assets/couponVoucher.svg'
+import distbottle from '../../assets/bottle.svg'
+import voucher from '../../assets/Coupon1.jpeg'
 import { useParams } from 'react-router-dom';
 
 function Coupon() {
@@ -66,18 +66,18 @@ function Coupon() {
             <div><img src={logo2}></img></div>
             <button className='px-[12px] py-[4.55px] bg-[#fc581c] text-white text-[9.1px] font-inter tracking-tight font-normal rounded-[21px] flex justify-start items-center gap-[10px]'>
               <p>+91  9799995778</p>
-              <img src={call2}></img>
+              <img src={call2} className='w-[15px] lg:w-auto'></img>
             </button>
           </div>
         </div>
         <div className='flex bg-gradient-to-r from-[#edf7ff] via-[#d6ecff] to-[#abdaff] justify-center items-center'>
-          <div className="w-[40%]">
-            <img src={distbottle}></img>
+          <div className="w-[40%] flex justify-center mb-[30px] mt-[25px] lg:mt-[50px]">
+            <img src={distbottle} className='w-[200px] h-[300px] lg:w-auto lg:h-auto'></img>
           </div>
           <div className='text-[#070707] w-[60%] flex flex-col gap-[15.28px] lg:gap-[48px] font-inter font-normal items-start py-[40px] lg:py-[85px]'>
-            <h1 className='text-[40.74px] leading-[38.2px] lg:text-9xl lg:leading-[120px]'>Let’s build a brand together!</h1>
-            <p className='text-[7.4px] leading-3 lg:text-2xl lg:leading-9 w-[215px] lg:w-[710px]'>We provide an actionable QR code for each of our advertisers, helping them to convert the leads by offering discounts or other attractions.</p>
-            <button onClick={handleClick} className='px-[7.64px] py-[3.18px] lg:px-[24px] lg:py-[10px] text-[#f7f7f7] bg-[#fc581c] text-[7.64px] lg:text-2xl font-medium rounded-[33px] justify-center items-center gap-2.5 inline-flex'>View your Coupon</button>
+            <h1 className='text-[40.74px] leading-[38.2px] lg:text-9xl lg:leading-[120px] px-[10px]'>Let’s build a brand together!</h1>
+            <p className='text-[7.4px] leading-3 lg:text-2xl lg:leading-9 w-[215px] lg:w-[710px] px-[10px]'>We provide an actionable QR code for each of our advertisers, helping them to convert the leads by offering discounts or other attractions.</p>
+            <button onClick={handleClick} className='px-[7.64px] py-[3.18px] lg:px-[24px] lg:py-[10px] text-[#f7f7f7] bg-[#fc581c] text-[7.64px] lg:text-2xl font-medium rounded-[33px] justify-center items-center gap-2.5 inline-flex ml-[10px]'>View your Coupon</button>
           </div>
         </div>
       </div>      

@@ -38,19 +38,19 @@ function ComponentD1() {
         <h1 className="w-full text-[40px] sm:text-6xl md:text-6xl  xl:text-8xl font-extrabold text-zinc-950 mt-16 sm:mt-10 lg:text-start text-center" >
           Distribute
           <br/>
-          FreeWater
+          AquaFree
         </h1>
         <p className="md:w-full lg:w-[600px] xl:w-[800px] text-center lg:text-start sm:w-full py-4 sm:py-6 md:py-6 xl:py-10 text-[10px] sm:text-[14px] md:text-[16px] lg:text-xl">
-          Fill up your stores your parties, events , business gatherings
+          Fill up your stores, parties, events , business gatherings
           <br className="hidden xl:block" />
-          with FreeWater.
+          with AquaFree.
         </p>
         <div className="flex lg:flex-col justify-center items-center lg:items-start gap-1">
           <ul>
             <li>
               <div className="flex justify-start py-3 md:py-4 xl:py-6">
                 <img src={dots} className="w-[16px] sm:w-[18px] md-w-auto"></img>
-                <p className="px-3 text-[8px] sm:text-[12px] md:text-xl">Increase Foot Traffic</p>
+                <p className="px-3 text-[8px] sm:text-[12px] md:text-xl">Increase Foot Fall</p>
               </div>
             </li>
             <li>

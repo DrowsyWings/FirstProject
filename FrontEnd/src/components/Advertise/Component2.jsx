@@ -76,8 +76,7 @@ function Component2() {
           <img src={n4} className='w-[65px] h-[25px] lg:w-auto lg:h-auto'></img>
           <div className="text-center text-slate-50 text-[9px] sm:text-[18px] lg:text-[28px] font-medium font-['Inter']">Connects websites,<br></br>coupons & videos</div>
         </div>
-        <div className="text-stone-300 text-[8px] sm:text-2xl font-normal font-['Inter'] mt-4 sm:mt-10">Alumi-Tec Bottle</div>
-        <div className="text-stone-300 text-[4px] sm:text-xs font-normal font-['Inter']">16 fl oz / 500 ml</div>
+        <div className="text-stone-300 text-[6px] sm:text-xl font-normal font-['Inter'] mt-6">22 fl oz / 650 ml</div>
         <div className='mt-[7px] sm:mt-[36px] mb-[20px] sm:mb-[74px]'>
         <button onMouseEnter={handleHover} onMouseLeave={antiHover} onClick={handleCopy} className="bg-transparent rounded-full w-[85.3px] sm:w-auto relative hidden md:block">
           <img src={source}></img>

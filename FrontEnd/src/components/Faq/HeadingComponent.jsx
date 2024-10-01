@@ -7,7 +7,7 @@ export function HeadingComponent() {
             Frequently asked questions
           </h1>
           <p className="text-[#070707] text-lg sm:text-xl md:text-2xl font-normal font-['Inter'] leading-normal sm:leading-relaxed md:leading-9 text-center mt-4 sm:mt-6">
-            Everything you need to know about FreeWater.
+            Everything you need to know about AquaFree.
           </p>
         </div>
       </div>

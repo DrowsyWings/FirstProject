@@ -48,12 +48,17 @@ function Faq() {
 
         <FaqItem
           question="What are the minimum requirements to be a distributor?"
-          answer="Retail outlets need to commit to distributing a minimum of one pallet of FreeWater per month. The location needs to be enticing enough to line up advertisers to cover the cost of the product/distribution. Each location will need to advertise that they are a FreeWater distributor by posting a sign on their window and on their website if applies. We will also market your location for you."
+          answer="Retail outlets need to commit to distributing a minimum of one pallet of AquaFree per month. The location needs to be enticing enough to line up advertisers to cover the cost of the product/distribution. Each location will need to advertise that they are a FreeWater distributor by posting a sign on their window and on their website if applies. We will also market your location for you."
         />
 
         <FaqItem
           question="How much does it cost to advertise?"
-          answer="It depends on several factors: 1) The number of units? 2) Are we distributing the water or are you distributing the water? 3) The location of distribution? 4) Do you have a graphic designer on staff or do you need us to design it for you? 5) Are you splitting the ad space with someone else?"
+          answer="It depends on several factors:
+          1) The number of units?
+          2) Are we distributing the water or are you distributing the water? 
+          3) The location of distribution?
+          4) Do you have a graphic designer on staff or do you need us to design it for you? 
+          5) Are you splitting the ad space with someone else?"
         />
 
         <FaqItem

@@ -21,7 +21,7 @@ function Component4() {
                     Most sought out advertising medium
                 </p>
                 <p className='sm:w-full text-[#3D3D3D] font-montserrat w-[208px] text-[10px] sm:text-[20px] not-italic font-medium leading-normal text-center sm:text-start'>   
-                    BlueWave provides exceptional benefit of over 1 hour interaction with your ad in a print medium circulated directly to high paying Grade A audience like shopping malls, cafes, tourist spots. Every ad has an attached QR code for easy conversion. The QR code also helps in tracking the efficiency of advertising.
+                    Aquafree provides exceptional benefit of over 1 hour interaction with your ad in a print medium circulated directly to high paying Grade A audience like shopping malls, cafes, tourist spots. Every ad has an attached QR code for easy conversion. The QR code also helps in tracking the efficiency of advertising.
                 </p>
             </div>
             <Link>

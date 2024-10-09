@@ -1,5 +1,3 @@
-![image](https://github.com/user-attachments/assets/05666254-da30-478e-8e5c-4046e2fa4c44)
-
 
 # Aqua Free
 
@@ -14,8 +12,7 @@ Aqua Free is a web-based platform similar to [freewater.io](https://freewater.io
 
 ## Demo
 
-Check out the live demo of Aqua Free here: [Aqua Free Demo](#https://aquafree.co.in/)
-
+Check out the live demo of Aqua Free here: [Aqua Free Demo](https://aquafree.co.in/)  <!-- Update with actual link -->
 
 ## Technologies Used
 
@@ -28,7 +25,6 @@ Check out the live demo of Aqua Free here: [Aqua Free Demo](#https://aquafree.co
   - Express.js for routing and API services
   - MongoDB with Mongoose (for data persistence)
 
- 
 ## Installation
 
 ### Prerequisites
@@ -39,61 +35,47 @@ Check out the live demo of Aqua Free here: [Aqua Free Demo](#https://aquafree.co
 ### Setup
 
 1. Clone the repository:
-   \`\`\`bash
+   ```bash
    git clone https://github.com/tanishq-t/AquaFree-Freelance
    cd aqua-free
-   \`\`\`
+   ```
 
 2. Install server-side dependencies:
-   \`\`\`bash
+   ```bash
    npm install
-   \`\`\`
+   ```
 
-3. Create a .env file in the project root and add the following environment variables:
-   \`\`\`
+3. Create a `.env` file in the project root and add the following environment variables:
+   ```
    PORT=5000
    MONGO_URI=your_mongodb_connection_string
-   \`\`\`
+   ```
 
 4. Start the backend server:
-   \`\`\`bash
+   ```bash
    node index.js
-   \`\`\`
+   ```
 
 ### Frontend Setup
 
 1. Navigate to the Frontend folder:
-   \`\`\`bash
+   ```bash
    cd Frontend
-   \`\`\`
+   ```
 
 2. Install client-side dependencies:
-   \`\`\`bash
+   ```bash
    npm install
-   \`\`\`
+   ```
 
 3. Start the React frontend:
-   \`\`\`bash
+   ```bash
    npm run dev
-   \`\`\`
-
-
+   ```
 
 ## Screenshots
 
-
 ![image](https://github.com/user-attachments/assets/d6c928eb-cb34-4053-9c4c-ef7558f61048)
-
-
-
 ![image](https://github.com/user-attachments/assets/4d9cef7f-3fd7-4d46-ad33-131ec7a458f6)
-
-
-
 ![image](https://github.com/user-attachments/assets/6aa8ecc8-3bca-498b-9e25-ec822b2edde9)
-
-
-
 ![image](https://github.com/user-attachments/assets/594d7bd9-2055-41a7-a102-16a22e67d96b)
-
-

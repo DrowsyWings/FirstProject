@@ -27,10 +27,8 @@ Check out the live demo of Aqua Free here: [Aqua Free Demo](#https://aquafree.co
   - Node.js
   - Express.js for routing and API services
   - MongoDB with Mongoose (for data persistence)
-  - JWT (for secure user authentication)
-- **Real-time Updates**: 
-  - Socket.io (to monitor real-time water consumption and manage notifications)
 
+ 
 ## Installation
 
 ### Prerequisites

@@ -25,7 +25,7 @@ function Component3() {
                     1Rs per bottle consumed is donated by Aquafree to Paani Foundation for building sustainable water channels across the country preventing droughts and saving lives
                 </p>
             </div>
-            <Link>
+            <Link to="https://www.paanifoundation.in/">
                 <button className='flex px-[5.8px] py-[4.3px] sm:px-[16px] sm:py-[12px] rounded-[15px] hover:opacity-80 active:opacity-50 bg-[#FD763A] text-[#FFFFFF] text-[8.775px] sm:text-[16px] mt-[16px] sm:mt-[16px]'>See Case Study</button>
             </Link>
         </div>

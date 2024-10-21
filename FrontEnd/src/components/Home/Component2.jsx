@@ -19,13 +19,13 @@ function Component2() {
                 </div>
                 <div className='flex flex-col gap-[16px] sm:gap-[32px] items-center sm:items-start'>
                     <p className='w-[362px] text-[#070707] font-playfair text-[24px] sm:text-[36px] font-medium not-italic leading-normal text-center sm:text-start'>
-                        Pure Water with food grade packaging
+                        Alkaline Water with food grade packaging
                     </p>
                     <p className='sm:w-full text-[#3D3D3D] font-montserrat w-[208px] text-[10px] sm:text-[20px] not-italic font-medium leading-normal text-center sm:text-start'>   
                         Aquafree sources premium alkaline water with reverse osmosis technology and provides it in durable sustainable packaging promoting recycling, moving away from single-use plastic bottles.
                     </p>
                 </div>
-                <Link>
+                <Link to="https://www.paanifoundation.in/">
                     <button className='flex px-[5.8px] py-[4.3px] sm:px-[16px] sm:py-[12px] rounded-[15px] hover:opacity-80 active:opacity-50 bg-[#FD763A] text-[#FFFFFF] text-[8.775px] sm:text-[16px] mt-[16px] sm:mt-[16px]'>See Case Study</button>
                 </Link>
             </div>

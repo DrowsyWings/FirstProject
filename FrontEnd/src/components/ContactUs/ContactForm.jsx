@@ -154,7 +154,6 @@ function Subscribe({ formRef }) {
                   className="text-gray-900 text-[16px] md:text-[22px] px-2 py-2 rounded-md border-none mt-2 w-full"
                   name="companyName"
                   value={companyName}
-                  type="tel"
                 />
                 {errors.companyName && (
                   <p className="text-red-500">{errors.companyName}</p>
@@ -195,12 +194,19 @@ function Subscribe({ formRef }) {
               <div className=" py-4 w-full sm:ml-6">
                 <label htmlFor="howManyBottles">How many bottles?</label>
                 <br />
-                <input
+                <select
                   onChange={(e) => handleChange(e, setHowManyBottles)}
                   className="text-gray-900 text-[16px] md:text-[22px] px-2 py-2 rounded-md border-none mt-2 w-full"
                   name="howManyBottles"
                   value={howManyBottles}
-                />
+                >
+                  <option value="less">less</option>
+                  <option value="4500">4500</option>
+                  <option value="9000">9000</option>
+                  <option value="10000">10000</option>
+                  <option value="20000">20000</option>
+                  <option value="more">more</option>
+                </select>
                 {errors.howManyBottles && (
                   <p className="text-red-500">{errors.howManyBottles}</p>
                 )}

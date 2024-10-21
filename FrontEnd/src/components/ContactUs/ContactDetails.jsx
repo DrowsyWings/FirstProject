@@ -1,12 +1,12 @@
 import React from "react";
-import CallIcon from "../../assets/Call.svg";
-import EmailIcon from "../../assets/message.svg";
-import LocationIcon from "../../assets/location.svg";
+import CallIcon from "../../assets/blackCall.svg";
+import EmailIcon from "../../assets/blackmessage.svg";
+import LocationIcon from "../../assets/blacklocation.svg";
 
 function ContactDetails() {
   return (
     <>
-      <div className="mt-20 md:mt-38 lg:mt-44 mb-10 md:mb-20 flex flex-row md:flex-col gap-10 md:gap-16 pr-4 md:pr-0">
+      <div className="mt-20 md:mt-38 lg:mt-44 mb-10 md:mb-20 flex flex-row md:flex-col gap-4 md:gap-16 md:pr-0 px-8">
         <div className="text-start md:text-center text-zinc-950 text-[40px] sm:text-[60px] md:text-[80px] lg:text-[92px] font-normal font-['Inter'] leading-[55px] md:leading-[70px] flex items-center justify-center w-full">
           Let's build a brand together!
         </div>

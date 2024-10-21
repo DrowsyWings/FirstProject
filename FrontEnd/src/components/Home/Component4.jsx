@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import image01 from '../../assets/rect01.svg'
-import image02 from '../../assets/rect02.svg'
+import image02 from '../../assets/bottle.svg'
 import image03 from '../../assets/rect03.svg'
 
 function Component4() {
@@ -24,7 +24,7 @@ function Component4() {
                     Aquafree provides exceptional benefit of over 1 hour interaction with your ad in a print medium circulated directly to high paying Grade A audience like shopping malls, cafes, tourist spots. Every ad has an attached QR code for easy conversion. The QR code also helps in tracking the efficiency of advertising.
                 </p>
             </div>
-            <Link>
+            <Link to="https://www.paanifoundation.in/">
                 <button className='flex px-[5.8px] py-[4.3px] sm:px-[16px] sm:py-[12px] rounded-[15px] hover:opacity-80 active:opacity-50 bg-[#FD763A] text-[#FFFFFF] text-[8.775px] sm:text-[16px] mt-[16px] sm:mt-[16px]'>See Case Study</button>
             </Link>
         </div>
@@ -49,7 +49,7 @@ function Component4() {
                 </div>
             </div>
             <div className='w-1/3 flex flex-col'>
-                <img src={image02} className='sm:w-[180px] w-[84px] sm:h-[360px] h-[170px] rounded-t-[33px] sm:rounded-t-[72px]'></img>
+                <img src={image02} className='sm:w-[180px] w-[84px] sm:h-[360px] h-[170px] rounded-t-[33px] sm:rounded-t-[72px] bg-[#4184d6] p-4 sm:p-6'></img>
                 <img src={image03} className='rounded-full sm:w-[180px] w-[84px] sm:h-[180px] h-[84px]'></img>
             </div>
         </div>

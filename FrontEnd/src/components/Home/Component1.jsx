@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import bottleImage from '../../assets/bottle.svg'
+import bottleImage from '../../assets/Gif.gif'
 import commaIcon from '../../assets/comma.svg'
 import vectorImage from '../../assets/vector.svg'
 import callIcon from '../../assets/callIcon.svg'

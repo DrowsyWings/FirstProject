@@ -2,10 +2,10 @@
 <path d="M1460.95 771.903C798.334 774.035 533.582 826.66 177.255 436.252C84.4188 334.536 -93.9588 -118.661 -93.9588 -118.661C-93.9588 -118.661 -375.775 306.472 -326.794 522.936C-197.146 1095.89 1707.47 747.222 1707.47 747.222C1707.47 747.222 1469.66 771.875 1460.95 771.903Z" fill="url(#paint0_linear_152_1473)"/>
 <defs>
 <linearGradient id="paint0_linear_152_1473" x1="1331.87" y1="1078.83" x2="-108.147" y2="328.513" gradientUnits="userSpaceOnUse">
-<stop stop-color="#0A0A0A"/>
-<stop offset="0.270833" stop-color="#00A3FF"/>
-<stop offset="0.6875" stop-color="#2757D1"/>
-<stop offset="1" stop-color="#1031DC"/>
+<stop stopColor="#0A0A0A"/>
+<stop offset="0.270833" stopColor="#00A3FF"/>
+<stop offset="0.6875" stopColor="#2757D1"/>
+<stop offset="1" stopColor="#1031DC"/>
 </linearGradient>
 </defs>
 </svg>

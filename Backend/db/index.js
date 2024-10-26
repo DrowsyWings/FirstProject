@@ -13,8 +13,18 @@ const FormSchema = new mongoose.Schema({
   NoOfBottles: Number,
 });
 
+const CouponSchema = new mongoose.Schema({
+  couponId: String,
+  imageUrl: String,
+  description: String,
+  visitCount: { type: Number, default: 0 },
+});
+
+const Coupon = mongoose.model("Coupon", CouponSchema);
+
 const Form = mongoose.model("Form", FormSchema);
 
 module.exports = {
   Form,
+  Coupon,
 };

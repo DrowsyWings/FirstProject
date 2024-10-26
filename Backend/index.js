@@ -3,21 +3,22 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const { Form } = require("./db/index");
 const { z } = require("zod");
+const { Coupon } = require("./db");
 
 const app = express();
-app.use(cors({
-  origin: "https://aquafree.co.in",
-  methods: "GET,POST,PUT,DELETE",
-  credential: true
-}));
-
-
+app.use(
+  cors({
+    origin: "https://aquafree.co.in",
+    methods: "GET,POST,PUT,DELETE",
+    credential: true,
+  })
+);
 
 app.use(bodyParser.json());
 
-app.use('/api',(req,res,next)=>{
+app.use("/api", (req, res, next) => {
   next();
-})
+});
 
 // Form Validation Schema
 const formSchema = z.object({
@@ -59,7 +60,31 @@ app.post("/", handleFormSubmission);
 app.post("/distribute", handleFormSubmission);
 app.post("/advertise", handleFormSubmission);
 app.post("/contact", handleFormSubmission);
+app.get("/coupon/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
 
+    const coupon = await Coupon.findOneAndUpdate(
+      { couponId: id },
+      { $inc: { visitCount: 1 } },
+      { new: true, upsert: true }
+    );
+
+    if (!coupon) {
+      return res.status(404).json({ message: "Coupon not found" });
+    }
+
+    res.status(200).json({
+      message: "Coupon page accessed",
+      imageUrl: coupon.imageUrl,
+      visitCount: coupon.visitCount,
+      couponId: coupon.couponId,
+    });
+  } catch (error) {
+    console.error("Error tracking coupon view:", error);
+    res.status(500).json({ message: "Error tracking coupon view" });
+  }
+});
 // Global error handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
